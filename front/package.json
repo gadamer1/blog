@@ -4,6 +4,7 @@
   "description": "nextjs를 사용한 frontend",
   "main": "index.js",
   "scripts": {
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },

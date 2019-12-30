@@ -108,25 +108,20 @@ var _jsxFileName = "D:\\webdev\\web_blog\\front\\pages\\index.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const Home = ({
-  msg
-}) => {
+const Home = () => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 6
     },
     __self: undefined
-  }, "\u314E\u3147\u314E\u3147", msg);
-};
-
-Home.getInitialProps = async ({
-  req
-}) => {
-  const msg = "hi";
-  return {
-    msg
-  };
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: undefined
+  }, "\u314E\u3147"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);

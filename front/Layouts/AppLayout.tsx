@@ -17,7 +17,7 @@ const AppLayout: FunctionComponent = ({ children }) => {
         {children}
       </Grid>
       <Grid item className="footer" xs={12}>
-        <Footer />
+        <Footer description="블로그" title="gadamer1의 블로그" />
       </Grid>
     </Grid>
   );

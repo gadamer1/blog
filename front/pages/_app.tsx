@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import { applyMiddleware, compose, createStore, Store } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
 
 import reducer from "../reducers";
 import rootSaga from "../sagas";
 import AppLayout from "../Layouts/AppLayout";
+import { store } from "../reducers/types";
 
 interface appProps {
   Component: React.ComponentType;
@@ -17,6 +19,14 @@ interface appProps {
 }
 
 const Blog: React.FC<appProps> = ({ Component, store, pageProps }) => {
+  // for material ui ssr
+  useEffect(() => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <Head>
@@ -36,25 +46,15 @@ declare global {
   }
 }
 
-const configureStore = (initialState, options) => {
+const configureStore = (initialState: store) => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware];
-  const enhancer =
-    process.env.NODE_ENV === "production"
-      ? compose(applyMiddleware(...middlewares))
-      : compose(
-          applyMiddleware(...middlewares),
-          !options.isServer &&
-            typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== "undefined"
-            ? window.__REDUX_DEVTOOLS_EXTENSION__()
-            : f => f
-        );
+  const composeEnhancer = composeWithDevTools({
+    // options like actionSanitizer, stateSanitizer
+  });
+  const enhancer = composeEnhancer(applyMiddleware(...middlewares));
   const store = createStore(reducer, initialState, enhancer);
   store.sagaTask = sagaMiddleware.run(rootSaga);
-  store.subscribe(() => {
-    console.dir("상태 변경");
-    console.dir(store.getState());
-  });
   return store;
 };
 

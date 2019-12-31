@@ -53,16 +53,10 @@ var Home = function Home() {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 5
     },
     __self: this
-  }, __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }, "\u314E\u3147"));
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);

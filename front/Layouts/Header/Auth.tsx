@@ -1,17 +1,34 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { store } from "../../reducers/types";
 import { Typography, Button } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { JWTlogout } from "../../utils/token";
+import { LOG_OUT_REQUEST } from "../../reducers/user/actions";
 
 const Auth: React.FC = () => {
   const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
+  const user = useSelector((state: store) => state.user.user);
+  const dispatch = useDispatch();
+
+  const _onClickLogout = () => {
+    JWTlogout();
+    dispatch({
+      type: LOG_OUT_REQUEST
+    });
+  };
 
   if (isLoggedIn) {
     return (
-      <Button href="profile">
-        <Typography></Typography>
-      </Button>
+      <>
+        {user && <Typography>반갑습니다 {user.nickname}님</Typography>}
+        <Button color="inherit" href="profile">
+          <Typography>프로필</Typography>
+        </Button>
+        <Button color="inherit" onClick={_onClickLogout}>
+          <Typography>로그아웃</Typography>
+        </Button>
+      </>
     );
   } else {
     return (

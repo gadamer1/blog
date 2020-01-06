@@ -11,14 +11,11 @@ import reducer from "../reducers";
 import rootSaga from "../sagas";
 import AppLayout from "../Layouts/AppLayout";
 import { store } from "../reducers/types";
+import { NextPage, NextPageContext } from "next";
+import axios from "axios";
+import { LOAD_USER_REQUEST } from "../reducers/user/actions";
 
-interface appProps {
-  Component: React.ComponentType;
-  store: Store;
-  pageProps: any;
-}
-
-const Blog: React.FC<appProps> = ({ Component, store, pageProps }) => {
+const Blog = ({ Component, store, pageProps }) => {
   // for material ui ssr
   useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -37,6 +34,25 @@ const Blog: React.FC<appProps> = ({ Component, store, pageProps }) => {
       </AppLayout>
     </Provider>
   );
+};
+
+Blog.getInitialProps = async context => {
+  let pageProps = {};
+  const { ctx, Component } = context;
+  const state = ctx.store.getState();
+  const cookie = ctx.isServer ? ctx.req.headers.cookie : "";
+  if (ctx.isServer && cookie) {
+    axios.defaults.headers.cookie = cookie;
+  }
+  if (!state.user.user && cookie) {
+    ctx.store.dispatch({
+      type: LOAD_USER_REQUEST
+    });
+  }
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  return { pageProps };
 };
 
 // FOR REDUX DEVTOOLS EXTENSION

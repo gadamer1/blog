@@ -11,9 +11,8 @@ RUN npm install
 COPY . .
 
 # 앱이 7777포트에 바인딩 되어있음
-EXPOSE 7777
+EXPOSE 8080
 
 RUN npm run build
 
 CMD [ "node","./dist/server.js" ]
-

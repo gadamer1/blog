@@ -1,16 +1,17 @@
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 import crypto from "crypto";
-
-const privateKey = "mypassword";
+require("dotenv").config();
 const aesKey = crypto.randomBytes(32);
-
+const privateKey = process.env.JWT_KEY;
 // jwt
 export const jwtSign = (obj: any): string => {
-  return jwt.sign(obj, privateKey);
+  //@ts-ignore
+  return jwt.sign(obj, process.env.JWT_KEY, { expiresIn: 86400 });
 };
 
 export const jwtVerify = (token: string): string | any => {
-  return jwt.verify(token, privateKey);
+  // @ts-ignore
+  return jwt.verify(token, process.env.JWT_KEY);
 };
 
 // crypt

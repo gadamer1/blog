@@ -4,7 +4,7 @@ import { CommentInterface } from "./Comment.interface";
 
 export interface PostInterface extends Document {
   title: string;
-  author: UserInterface;
+  authorId: string;
   body: string;
   comments: CommentInterface;
   Date: Date;

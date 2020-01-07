@@ -1,19 +1,18 @@
 import express, { Request, Response, NextFunction } from "express";
-import { getPostById, getPostsByAuthor } from "../controllers/post.controller";
+import * as AuthMiddleware from "../middlewares/auth";
+import * as PostController from "../controllers/post.controller";
 
 const router = express.Router();
 
 // create post
-router.post("/", (req: Request, res: Response, next: NextFunction) => {});
+router.post("/", AuthMiddleware.verifyLogin, PostController.createPost);
 
-// get postByAuthor
-router.get("/", (req: Request, res: Response, next: NextFunction) => {
-  getPostsByAuthor(req, res, next);
-});
+// get post one
+router.post("/category/title", PostController.getPostByCategoryAndTitle);
 
 // get postById
 router.get("/:postId", (req: Request, res: Response, next: NextFunction) => {
-  getPostById(req, res, next);
+  PostController.getPostById(req, res, next);
 });
 
 export default router;

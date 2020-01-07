@@ -356,20 +356,34 @@ const Auth = () => {
         lineNumber: 29
       },
       __self: undefined
-    }, "\uB85C\uADF8\uC544\uC6C3")));
+    }, "\uB85C\uADF8\uC544\uC6C3")), user.admin && __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      color: "inherit",
+      href: "admin/console",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: undefined
+    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      },
+      __self: undefined
+    }, "\uCF58\uC194")));
   } else {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       color: "inherit",
       href: "/login",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 41
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 42
       },
       __self: undefined
     }, "\uB85C\uADF8\uC778")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -377,13 +391,13 @@ const Auth = () => {
       href: "/signup",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 44
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 45
       },
       __self: undefined
     }, "\uD68C\uC6D0 \uAC00\uC785")));
@@ -1219,26 +1233,60 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const initialState = {
-  posts: [],
+  posts: null,
   currentPost: null,
-  loadingStates: {},
-  metaStates: {}
+  loadingStates: {
+    isPostLoading: false,
+    isPosting: false,
+    isPostingSuccess: false,
+    isPostsLoading: false
+  },
+  metaStates: {
+    getPostStatusCode: 0,
+    getPostsStatusCode: 0,
+    postStautsCode: 0
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   return immer__WEBPACK_IMPORTED_MODULE_0___default()(state, draft => {
     switch (action.type) {
       case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_REQUEST"]:
         {
+          draft.loadingStates.isPostLoading = true;
           break;
         }
 
       case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_SUCCESS"]:
         {
+          draft.loadingStates.isPostLoading = false;
+          draft.posts = action.result;
           break;
         }
 
       case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_FAILURE"]:
         {
+          draft.loadingStates.isPostLoading = false;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_REQUEST"]:
+        {
+          draft.loadingStates.isPosting = true;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_SUCCESS"]:
+        {
+          draft.loadingStates.isPostingSuccess = true;
+          draft.loadingStates.isPosting = false;
+          draft.posts = action.result;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_FAILURE"]:
+        {
+          draft.loadingStates.isPosting = false;
+          draft.loadingStates.isPostingSuccess = false;
           break;
         }
 
@@ -1458,12 +1506,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return postSaga; });
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/post/actions */ "./reducers/post/actions.ts");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
-function* watchPost() {}
+
+
+function makePostAPI(data) {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/post", data, {
+    withCredentials: true
+  });
+}
+
+function* makePost(action) {
+  try {
+    const Post = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(makePostAPI, action.payload);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_SUCCESS"],
+      result: {
+        body: Post.data.post,
+        nickname: Post.data.nickname,
+        date: Post.data.date,
+        title: Post.data.title,
+        _id: Post.data._id
+      }
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_FAILURE"],
+      error: e.response
+    });
+  }
+}
+
+function* watchMakePost() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_REQUEST"], makePost);
+}
+
+function getPostsAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/posts", {
+    withCredentials: true
+  });
+}
+
+function* getPosts() {
+  try {
+    const Posts = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(getPostsAPI);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_SUCCESS"],
+      result: Posts.data.postLists
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_FAILURE"],
+      error: e.response
+    });
+  }
+}
+
+function* watchGetPosts() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_REQUEST"], getPosts);
+}
 
 function* postSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchPost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchMakePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetPosts)]);
 }
 
 /***/ }),
@@ -1600,10 +1709,12 @@ function* userSaga() {
 /*!***********************************!*\
   !*** ./static/images/profile.jpg ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/_next/static/images/profile-f0da3a0fc293108120d74dbfc354901b.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "profile.jpg");
 
 /***/ }),
 
@@ -1677,14 +1788,15 @@ const JWTauth = ctx => {
     token
   } = next_cookies__WEBPACK_IMPORTED_MODULE_11___default()(ctx);
 
+  if (ctx.req && !token) {
+    ctx.res.writeHead(302, {
+      Location: "/login"
+    });
+    ctx.res.end();
+    return;
+  }
+
   if (!token) {
-    if (true) {
-      ctx.res.writeHead(302, {
-        Location: "/login"
-      });
-      ctx.res.end();
-    }
-  } else {
     next_router__WEBPACK_IMPORTED_MODULE_10___default.a.push("/login");
   }
 
@@ -1714,7 +1826,7 @@ const JWTwithAuthSync = WrappedComponent => {
     return __jsx(WrappedComponent, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__["default"])({}, props, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 50
       },
       __self: undefined
     }));

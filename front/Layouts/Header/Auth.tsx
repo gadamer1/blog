@@ -28,6 +28,11 @@ const Auth: React.FC = () => {
         <Button color="inherit" onClick={_onClickLogout}>
           <Typography>로그아웃</Typography>
         </Button>
+        {user.admin && (
+          <Button color="inherit" href="admin/console">
+            <Typography>콘솔</Typography>
+          </Button>
+        )}
       </>
     );
   } else {

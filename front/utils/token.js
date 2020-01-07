@@ -10,12 +10,14 @@ export const JWTlogin = ({ token }) => {
 
 export const JWTauth = ctx => {
   const { token } = nextCookie(ctx);
+
+  if (ctx.req && !token) {
+    ctx.res.writeHead(302, { Location: "/login" });
+    ctx.res.end();
+    return;
+  }
+
   if (!token) {
-    if (typeof window === "undefined") {
-      ctx.res.writeHead(302, { Location: "/login" });
-      ctx.res.end();
-    }
-  } else {
     Router.push("/login");
   }
 

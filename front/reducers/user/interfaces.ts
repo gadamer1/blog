@@ -21,6 +21,7 @@ export interface user {
   nickname: string;
   email: string;
   emailVerified: boolean;
+  admin: boolean;
 }
 
 /* 로딩 상태 */

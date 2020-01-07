@@ -30,10 +30,10 @@ const useStyles = makeStyles(theme => ({
 const SignUp = () => {
   const classes = useStyles({});
   const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
-
+  const { nickname } = useSelector((state: store) => state.user.user);
   useEffect(() => {
     if (isLoggedIn) {
-      Router.push("/profile");
+      Router.push(`/profile/${nickname}`);
     }
   }, [isLoggedIn]);
 
@@ -59,11 +59,4 @@ const SignUp = () => {
   );
 };
 
-SignUp.getInitialProps = async context => {
-  const state = context.store.getState();
-  if (state.user.metaStates.isLoggedIn) {
-    Router.push("/");
-  }
-};
-
-export default JWTwithAuthSync(SignUp);
+export default SignUp;

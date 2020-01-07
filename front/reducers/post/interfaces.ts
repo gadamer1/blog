@@ -12,6 +12,10 @@ import {
 export interface post {
   _id: string;
   nickname: string;
+  title: string;
+  category: string;
+  body: string;
+  Date: Date;
 }
 
 /* 로딩 상태 */
@@ -19,6 +23,7 @@ export interface loadingStates {
   isPosting: boolean;
   isPostsLoading: boolean;
   isPostLoading: boolean;
+  isPostingSuccess: boolean;
 }
 
 /* meta states */
@@ -28,7 +33,12 @@ export interface metaStates {
   getPostStatusCode: number;
 }
 export interface postStore {
-  posts: post[] | null;
+  posts: {
+    dev: post[];
+    hacking: post[];
+    finance: post[];
+    business: post[];
+  } | null;
   currentPost: post | null;
   loadingStates: loadingStates;
   metaStates: metaStates;
@@ -56,10 +66,6 @@ export interface makePostFailureAction {
 /* 게시글들 가져오기 */
 export interface getPostsRequsetAction {
   type: typeof GET_POSTS_REQUEST;
-  payload: {
-    author?: string;
-    pageNumber: number;
-  };
 }
 export interface getPostsSuccessAction {
   type: typeof GET_POSTS_SUCCESS;

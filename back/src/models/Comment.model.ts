@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import { UserSchema } from "./User.model";
-import { CommentInterface } from "../interfaces/Comment.interface";
+import { CommentInterface } from "../interfaces/Comment.Interface";
 
 export const CommentSchema = new mongoose.Schema({
   authorId: { type: String, required: true },

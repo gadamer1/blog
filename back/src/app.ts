@@ -29,8 +29,8 @@ class App {
     // express
     this.app = express();
     this.setExpress();
-    this.setRoutes();
     this.useMiddlewares();
+    this.setRoutes();
 
     // validator
     this.initValidator();
@@ -79,7 +79,7 @@ class App {
     this.app.use(express.urlencoded({ limit: "50mb", extended: true }));
     this.app.use(cookieParser(process.env.COOKIE_SECRET));
     this.app.use(express.static(path.join(__dirname, "public")));
-    this.app.use(cors());
+    this.app.use(cors({ origin: true, credentials: true }));
     this.app.use(logger("dev"));
     this.app.use(
       (

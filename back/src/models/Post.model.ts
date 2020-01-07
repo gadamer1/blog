@@ -5,9 +5,10 @@ import { PostInterface } from "../interfaces/Post.Interface";
 
 const PostSchema: Schema = new mongoose.Schema({
   title: { type: String, required: true },
-  author: UserSchema,
+  category: { type: String, required: true },
+  nickname: { type: String, required: true },
+  authorId: { type: String, required: true },
   body: { type: String, required: true },
-  comments: CommentSchema,
   Date: { type: Date, default: Date.now },
   updatedDate: { type: Date, default: Date.now },
   hidden: { type: Boolean, default: false },

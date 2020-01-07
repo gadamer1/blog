@@ -3,7 +3,7 @@ import user from "./user";
 import post from "./post";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.baseURL = "http://localhost:7777/api";
 
 export default function* rootSaga() {
   yield all([fork(user), fork(post)]);

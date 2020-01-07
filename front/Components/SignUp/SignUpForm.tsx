@@ -55,6 +55,10 @@ const SignUpForm: FunctionComponent = () => {
       setPasswordError("비밀번호를 입력해주세요");
       validate = false;
     }
+    if (password.length < 8) {
+      setPasswordCheckError("비밀번호의 길이는 8자이상으로 입력해주세요");
+      validate = false;
+    }
     if (passwordCheck.trim() === "") {
       setPasswordCheckError("비밀번호 확인란을 입력해주세요");
       validate = false;

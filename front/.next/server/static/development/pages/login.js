@@ -93,6 +93,35 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./Components/IsAleadyLoggedIn.tsx":
+/*!*****************************************!*\
+  !*** ./Components/IsAleadyLoggedIn.tsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "D:\\webdev\\web_blog\\front\\Components\\IsAleadyLoggedIn.tsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const IsAleadyLoggedIn = () => {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: undefined
+  }, "\uC774\uBBF8 \uB85C\uADF8\uC778 \uB410\uC2B5\uB2C8\uB2E4"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IsAleadyLoggedIn);
+
+/***/ }),
+
 /***/ "./pages/login.tsx":
 /*!*************************!*\
   !*** ./pages/login.tsx ***!
@@ -102,7 +131,6 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SignIn; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
@@ -132,8 +160,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _reducers_user_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../reducers/user/actions */ "./reducers/user/actions.ts");
-/* harmony import */ var _utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../utils/Components/CircularProgressComponent */ "./utils/Components/CircularProgressComponent.tsx");
-/* harmony import */ var _utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/validateEmailInput */ "./utils/validateEmailInput.ts");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/Components/CircularProgressComponent */ "./utils/Components/CircularProgressComponent.tsx");
+/* harmony import */ var _utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/validateEmailInput */ "./utils/validateEmailInput.ts");
+/* harmony import */ var _Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Components/IsAleadyLoggedIn */ "./Components/IsAleadyLoggedIn.tsx");
 var _jsxFileName = "D:\\webdev\\web_blog\\front\\pages\\login.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -151,8 +182,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-// loading component
+ // loading component
+
  // validate email
+
 
 
 const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_12__["makeStyles"])(theme => Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_12__["createStyles"])({
@@ -175,11 +208,15 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_12__[
     margin: theme.spacing(3, 0, 2)
   }
 }));
-function SignIn() {
+
+const Login = () => {
   const classes = useStyles({});
   const {
     isLoging
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.loadingStates);
+  const {
+    isLoggedIn
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.metaStates);
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
   const {
     0: email,
@@ -197,12 +234,17 @@ function SignIn() {
     0: passwordError,
     1: setPasswordError
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (isLoggedIn) {
+      next_router__WEBPACK_IMPORTED_MODULE_15___default.a.push("/");
+    }
+  }, [isLoggedIn]);
 
   const handleSubmit = event => {
     event.preventDefault();
     let validate = true;
 
-    if (!Object(_utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_16__["default"])(email)) {
+    if (!Object(_utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_17__["default"])(email)) {
       setEmailError("올바르지 않은 이메일 주소입니다.");
       validate = false;
     }
@@ -244,57 +286,63 @@ function SignIn() {
     setPassword(event.target.value);
   };
 
-  return __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13___default.a, {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, isLoggedIn ? __jsx(_Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109
+    },
+    __self: undefined
+  }) : __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13___default.a, {
     component: "main",
     maxWidth: "xs",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 111
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 112
     },
-    __self: this
+    __self: undefined
   }), __jsx("div", {
     className: classes.paper,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 113
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     className: classes.avatar,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 114
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_icons_LockOutlined__WEBPACK_IMPORTED_MODULE_10___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 115
     },
-    __self: this
+    __self: undefined
   })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11___default.a, {
     component: "h1",
     variant: "h5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 117
     },
-    __self: this
+    __self: undefined
   }, "\uB85C\uADF8\uC778"), __jsx("form", {
     className: classes.form,
     noValidate: true,
     onSubmit: handleSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 120
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_5___default.a, {
     error: !!emailError,
     variant: "outlined",
@@ -311,9 +359,9 @@ function SignIn() {
     helperText: emailError,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 121
     },
-    __self: this
+    __self: undefined
   }), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_5___default.a, {
     error: !!passwordError,
     variant: "outlined",
@@ -330,25 +378,25 @@ function SignIn() {
     helperText: passwordError,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 136
     },
-    __self: this
+    __self: undefined
   }), __jsx(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_6___default.a, {
     control: __jsx(_material_ui_core_Checkbox__WEBPACK_IMPORTED_MODULE_7___default.a, {
       value: "remember",
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 138
+        lineNumber: 152
       },
-      __self: this
+      __self: undefined
     }),
     label: "\uB85C\uADF8\uC778 \uC0C1\uD0DC \uC720\uC9C0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 137
+      lineNumber: 151
     },
-    __self: this
+    __self: undefined
   }), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
     type: "submit",
     fullWidth: true,
@@ -358,61 +406,63 @@ function SignIn() {
     disabled: isLoging,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141
+      lineNumber: 155
     },
-    __self: this
-  }, isLoging ? __jsx(_utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    __self: undefined
+  }, isLoging ? __jsx(_utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_16__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 150
+      lineNumber: 164
     },
-    __self: this
+    __self: undefined
   }) : __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152
+      lineNumber: 166
     },
-    __self: this
+    __self: undefined
   }, "\uB85C\uADF8\uC778")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
     container: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155
+      lineNumber: 169
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
     item: true,
     xs: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 170
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_8___default.a, {
     href: "#",
     variant: "body2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 171
     },
-    __self: this
+    __self: undefined
   }, "\uBE44\uBC00\uBC88\uD638\uB97C \uC78A\uC73C\uC168\uB098\uC694?")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
     item: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161
+      lineNumber: 175
     },
-    __self: this
+    __self: undefined
   }, __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_8___default.a, {
     href: "/signup",
     variant: "body2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 176
     },
-    __self: this
-  }, "계정이 없으신가요? 회원가입"))))));
-}
+    __self: undefined
+  }, "계정이 없으신가요? 회원가입")))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
 
 /***/ }),
 
@@ -420,7 +470,7 @@ function SignIn() {
 /*!**********************************!*\
   !*** ./reducers/user/actions.ts ***!
   \**********************************/
-/*! exports provided: LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE */
+/*! exports provided: LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, GET_USER_BY_NICKNAME_REQUEST, GET_USER_BY_NICKNAME_SUCCESS, GET_USER_BY_NICKNAME_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -431,6 +481,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_REQUEST", function() { return SIGN_UP_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_SUCCESS", function() { return LOG_OUT_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_FAILURE", function() { return LOG_OUT_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_REQUEST", function() { return LOAD_USER_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_SUCCESS", function() { return LOAD_USER_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_FAILURE", function() { return LOAD_USER_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_REQUEST", function() { return GET_USER_BY_NICKNAME_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_SUCCESS", function() { return GET_USER_BY_NICKNAME_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_FAILURE", function() { return GET_USER_BY_NICKNAME_FAILURE; });
 /**/
 const LOGIN_REQUEST = "LOGIN_REQUEST";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -440,6 +499,16 @@ const LOGIN_FAILURE = "LOGIN_FAILURE";
 const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
+const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
+const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
+const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
+const LOAD_USER_REQUEST = "LOAD_USER_REQUEST";
+const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
+const LOAD_USER_FAILURE = "LOAD_USER_FAILURE"; // 닉네임으로 유저 가져오기
+
+const GET_USER_BY_NICKNAME_REQUEST = "GET_USER_BY_NICKNAME_REQUEST";
+const GET_USER_BY_NICKNAME_SUCCESS = "GET_USER_BY_NICKNAME_SUCCESS";
+const GET_USER_BY_NICKNAME_FAILURE = "GET_USER_BY_NICKNAME_FAILURE";
 
 /***/ }),
 
@@ -660,6 +729,17 @@ module.exports = require("@material-ui/core/styles");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/LockOutlined");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 

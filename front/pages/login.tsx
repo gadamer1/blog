@@ -15,12 +15,15 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { LOGIN_REQUEST } from "../reducers/user/actions";
 import { store } from "../reducers/types";
-
+import { JWTlogin, JWTwithAuthSync } from "../utils/token";
+import Router from "next/router";
 // loading component
 import CircularProgressComponent from "../utils/Components/CircularProgressComponent";
 
 // validate email
 import validateEmailInput from "../utils/validateEmailInput";
+import { NextPageContext, NextPage } from "next";
+import IsAleadyLoggedIn from "../Components/IsAleadyLoggedIn";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,14 +47,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function SignIn() {
+const Login = () => {
   const classes = useStyles({});
   const { isLoging } = useSelector((state: store) => state.user.loadingStates);
+  const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      Router.push("/");
+    }
+  }, [isLoggedIn]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -94,78 +104,86 @@ export default function SignIn() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          로그인
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <TextField
-            error={!!emailError}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="이메일"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={handleEmail}
-            helperText={emailError}
-          />
-          <TextField
-            error={!!passwordError}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="비밀번호"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={handlePassword}
-            helperText={passwordError}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="로그인 상태 유지"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            disabled={isLoging}
-          >
-            {isLoging ? (
-              <CircularProgressComponent />
-            ) : (
-              <Typography>로그인</Typography>
-            )}
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                비밀번호를 잊으셨나요?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"계정이 없으신가요? 회원가입"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+    <>
+      {isLoggedIn ? (
+        <IsAleadyLoggedIn />
+      ) : (
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              로그인
+            </Typography>
+            <form className={classes.form} noValidate onSubmit={handleSubmit}>
+              <TextField
+                error={!!emailError}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="이메일"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={handleEmail}
+                helperText={emailError}
+              />
+              <TextField
+                error={!!passwordError}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="비밀번호"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={handlePassword}
+                helperText={passwordError}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="로그인 상태 유지"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                disabled={isLoging}
+              >
+                {isLoging ? (
+                  <CircularProgressComponent />
+                ) : (
+                  <Typography>로그인</Typography>
+                )}
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    비밀번호를 잊으셨나요?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/signup" variant="body2">
+                    {"계정이 없으신가요? 회원가입"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Container>
+      )}
+    </>
   );
-}
+};
+
+export default Login;

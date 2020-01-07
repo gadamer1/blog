@@ -52,7 +52,7 @@ const MakePostsForm = () => {
   const { isPosting, isPostingSuccess } = useSelector(
     (state: store) => state.post.loadingStates
   );
-  const { _id, nickname } = useSelector((state: store) => state.user.user);
+  const { _id, nickname } = useSelector((state: store) => state.user.me);
   // 포스팅 완료됐으면 튕구기
   useEffect(() => {
     if (isPostingSuccess) {

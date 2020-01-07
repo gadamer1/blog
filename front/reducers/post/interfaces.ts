@@ -4,7 +4,10 @@ import {
   MAKE_POST_SUCCESS,
   GET_POSTS_REQUEST,
   GET_POSTS_SUCCESS,
-  GET_POSTS_FAILURE
+  GET_POSTS_FAILURE,
+  FETCH_POST_SUCCESS,
+  FETCH_POST_REQUEST,
+  FETCH_POST_FAILURE
 } from "./actions";
 // STATES
 
@@ -33,12 +36,7 @@ export interface metaStates {
   getPostStatusCode: number;
 }
 export interface postStore {
-  posts: {
-    dev: post[];
-    hacking: post[];
-    finance: post[];
-    business: post[];
-  } | null;
+  posts: post[] | null;
   currentPost: post | null;
   loadingStates: loadingStates;
   metaStates: metaStates;
@@ -66,6 +64,9 @@ export interface makePostFailureAction {
 /* 게시글들 가져오기 */
 export interface getPostsRequsetAction {
   type: typeof GET_POSTS_REQUEST;
+  payload: {
+    category: string;
+  } | null;
 }
 export interface getPostsSuccessAction {
   type: typeof GET_POSTS_SUCCESS;
@@ -76,10 +77,30 @@ export interface getPostsFailureAction {
   errorCode: number;
 }
 
+/* 게시글 하나 가져오기 */
+export interface fetchPostRequsetAction {
+  type: typeof FETCH_POST_REQUEST;
+  payload: {
+    title: string;
+    category: string;
+  } | null;
+}
+export interface fetchPostSuccessAction {
+  type: typeof FETCH_POST_SUCCESS;
+  result: post;
+}
+export interface fetchPostFailureAction {
+  type: typeof FETCH_POST_FAILURE;
+  errorCode: number;
+}
+
 export type userActions =
   | makePostRequestAction
   | makePostSuccessAction
   | makePostFailureAction
   | getPostsRequsetAction
   | getPostsSuccessAction
-  | getPostsFailureAction;
+  | getPostsFailureAction
+  | fetchPostFailureAction
+  | fetchPostRequsetAction
+  | fetchPostSuccessAction;

@@ -10,7 +10,6 @@ const PostList = () => {
   const { isPostLoading } = useSelector(
     (state: store) => state.post.loadingStates
   );
-  const posts = useSelector((state: store) => state.post.posts);
   if (isPostLoading) {
     return (
       <>
@@ -24,14 +23,6 @@ const PostList = () => {
       </div>
     );
   }
-};
-
-PostList.getInitialProps = ctx => {
-  ctx.store.dispatch({
-    type: GET_POSTS_REQUEST
-  });
-
-  return {};
 };
 
 export default PostList;

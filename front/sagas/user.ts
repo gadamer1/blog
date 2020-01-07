@@ -9,7 +9,8 @@ import {
 import axios from "axios";
 import {
   loginRequestAction,
-  signUpRequsetAction
+  signUpRequsetAction,
+  getUserByNicknameRequestAction
 } from "../reducers/user/interfaces";
 import {
   LOGIN_REQUEST,
@@ -23,7 +24,10 @@ import {
   LOAD_USER_FAILURE,
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
-  LOG_OUT_FAILURE
+  LOG_OUT_FAILURE,
+  GET_USER_BY_NICKNAME_REQUEST,
+  GET_USER_BY_NICKNAME_FAILURE,
+  GET_USER_BY_NICKNAME_SUCCESS
 } from "../reducers/user/actions";
 
 // 회원가입 요청
@@ -130,11 +134,36 @@ function* watchLogout() {
   yield takeLatest(LOG_OUT_REQUEST, logout);
 }
 
+function getUserByNicknameAPI(data) {
+  const { nickname } = data;
+  return axios.get(`/user/info/${nickname}`);
+}
+
+function* getUserByNickname(action: getUserByNicknameRequestAction) {
+  try {
+    const result = yield call(getUserByNicknameAPI, action.payload);
+    yield put({
+      type: GET_USER_BY_NICKNAME_SUCCESS,
+      result: result.data.result
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: GET_USER_BY_NICKNAME_FAILURE
+    });
+  }
+}
+
+function* watchGetUserByNickname() {
+  yield takeLatest(GET_USER_BY_NICKNAME_REQUEST, getUserByNickname);
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
     fork(watchSignUp),
     fork(watchLoadUser),
-    fork(watchLogout)
+    fork(watchLogout),
+    fork(watchGetUserByNickname)
   ]);
 }

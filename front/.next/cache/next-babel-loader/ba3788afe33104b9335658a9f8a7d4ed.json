@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import { userStore } from \"./user/interfaces\";\r\nimport { postStore } from \"./post/interfaces\";\r\n\r\nexport type store = { user: userStore; post: postStore };\r\n"]},"metadata":{},"sourceType":"module"}

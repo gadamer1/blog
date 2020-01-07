@@ -311,7 +311,7 @@ const Auth = () => {
   const {
     isLoggedIn
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.metaStates);
-  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.user);
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.me);
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
 
   const _onClickLogout = () => {
@@ -330,7 +330,7 @@ const Auth = () => {
       __self: undefined
     }, "\uBC18\uAC11\uC2B5\uB2C8\uB2E4 ", user.nickname, "\uB2D8"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       color: "inherit",
-      href: "profile",
+      href: `/profile/${user.nickname}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 25
@@ -358,7 +358,7 @@ const Auth = () => {
       __self: undefined
     }, "\uB85C\uADF8\uC544\uC6C3")), user.admin && __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       color: "inherit",
-      href: "admin/console",
+      href: "/admin/console",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 32
@@ -673,7 +673,7 @@ const LeftDrawerList = ({
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardMedia"], {
     className: classes.media,
-    image: __webpack_require__(/*! ../../static/images/profile.jpg */ "./static/images/profile.jpg"),
+    image: "../../static/images/profile.jpg",
     title: "\uB098\uB294 \uC774\uB7F0 \uC0AC\uB78C\uC785\uB2C8\uB2E4",
     __source: {
       fileName: _jsxFileName,
@@ -716,6 +716,7 @@ const LeftDrawerList = ({
     __self: undefined
   }, categories.map((obj, index) => __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: `${obj.slug}`,
+    key: obj.name,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 97
@@ -1192,7 +1193,7 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**********************************!*\
   !*** ./reducers/post/actions.ts ***!
   \**********************************/
-/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE */
+/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1206,6 +1207,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_REQUEST", function() { return GET_POSTS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_SUCCESS", function() { return GET_POSTS_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_FAILURE", function() { return GET_POSTS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_REQUEST", function() { return FETCH_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_SUCCESS", function() { return FETCH_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_FAILURE", function() { return FETCH_POST_FAILURE; });
 const MAKE_POST_REQUEST = "MAKE_POST_REQUEST";
 const MAKE_POST_SUCCESS = "MAKE_POST_SUCCESS";
 const MAKE_POST_FAILURE = "MAKE_POST_FAILURE";
@@ -1215,6 +1219,9 @@ const GET_POST_FAILURE = "GET_POST_FAILURE";
 const GET_POSTS_REQUEST = "GET_POSTS_REQUEST";
 const GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";
 const GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
+const FETCH_POST_REQUEST = "FETCH_POST_REQUEST";
+const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
+const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 /***/ }),
 
@@ -1290,6 +1297,44 @@ const initialState = {
           break;
         }
 
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POST_REQUEST"]:
+        {
+          draft.loadingStates.isPostLoading = true;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POST_SUCCESS"]:
+        {
+          draft.currentPost = action.result;
+          draft.loadingStates.isPostLoading = false;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_POST_FAILURE"]:
+        {
+          draft.loadingStates.isPostLoading = false;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_REQUEST"]:
+        {
+          draft.loadingStates.isPostLoading = true;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_SUCCESS"]:
+        {
+          draft.currentPost = action.result;
+          draft.loadingStates.isPostLoading = false;
+          break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_FAILURE"]:
+        {
+          draft.loadingStates.isPostLoading = false;
+          break;
+        }
+
       default:
         {
           break;
@@ -1304,7 +1349,7 @@ const initialState = {
 /*!**********************************!*\
   !*** ./reducers/user/actions.ts ***!
   \**********************************/
-/*! exports provided: LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE */
+/*! exports provided: LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, GET_USER_BY_NICKNAME_REQUEST, GET_USER_BY_NICKNAME_SUCCESS, GET_USER_BY_NICKNAME_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1321,6 +1366,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_REQUEST", function() { return LOAD_USER_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_SUCCESS", function() { return LOAD_USER_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_FAILURE", function() { return LOAD_USER_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_REQUEST", function() { return GET_USER_BY_NICKNAME_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_SUCCESS", function() { return GET_USER_BY_NICKNAME_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_USER_BY_NICKNAME_FAILURE", function() { return GET_USER_BY_NICKNAME_FAILURE; });
 /**/
 const LOGIN_REQUEST = "LOGIN_REQUEST";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -1335,7 +1383,11 @@ const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 const LOAD_USER_REQUEST = "LOAD_USER_REQUEST";
 const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
-const LOAD_USER_FAILURE = "LOAD_USER_FAILURE";
+const LOAD_USER_FAILURE = "LOAD_USER_FAILURE"; // 닉네임으로 유저 가져오기
+
+const GET_USER_BY_NICKNAME_REQUEST = "GET_USER_BY_NICKNAME_REQUEST";
+const GET_USER_BY_NICKNAME_SUCCESS = "GET_USER_BY_NICKNAME_SUCCESS";
+const GET_USER_BY_NICKNAME_FAILURE = "GET_USER_BY_NICKNAME_FAILURE";
 
 /***/ }),
 
@@ -1356,11 +1408,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /*INITIAL STATE */
 const initialState = {
-  user: null,
+  me: null,
+  userInfo: null,
   loadingStates: {
     isLoging: false,
     isSigning: false,
-    isLogouting: false
+    isLogouting: false,
+    isLoadingUser: false
   },
   metaStates: {
     isLoggedIn: false,
@@ -1386,7 +1440,7 @@ const mockUser = {
           draft.loadingStates.isLoging = false;
           draft.metaStates.loginStautsCode = 200;
           draft.metaStates.isLoggedIn = true;
-          draft.user = action.result.user;
+          draft.me = action.result.user;
           break;
         }
 
@@ -1406,7 +1460,7 @@ const mockUser = {
       case _actions__WEBPACK_IMPORTED_MODULE_1__["SIGN_UP_SUCCESS"]:
         {
           draft.loadingStates.isSigning = false;
-          draft.user = action.result.user;
+          draft.me = action.result.user;
           draft.metaStates.isLoggedIn = true;
           break;
         }
@@ -1427,7 +1481,7 @@ const mockUser = {
 
       case _actions__WEBPACK_IMPORTED_MODULE_1__["LOG_OUT_SUCCESS"]:
         {
-          draft.user = null;
+          draft.me = null;
           draft.loadingStates.isLogouting = false;
           draft.metaStates.isLoggedIn = false;
         }
@@ -1445,7 +1499,7 @@ const mockUser = {
 
       case _actions__WEBPACK_IMPORTED_MODULE_1__["LOAD_USER_SUCCESS"]:
         {
-          draft.user = action.result.user;
+          draft.me = action.result.user;
           draft.metaStates.isLoggedIn = true;
           break;
         }
@@ -1453,8 +1507,25 @@ const mockUser = {
       case _actions__WEBPACK_IMPORTED_MODULE_1__["LOAD_USER_FAILURE"]:
         {
           draft.metaStates.isLoggedIn = false;
-          draft.user = null;
+          draft.me = null;
           break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_USER_BY_NICKNAME_REQUEST"]:
+        {
+          draft.loadingStates.isLoadingUser = true;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_USER_BY_NICKNAME_SUCCESS"]:
+        {
+          draft.loadingStates.isLoadingUser = false; // @ts-ignore
+
+          draft.userInfo = action.result;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["GET_USER_BY_NICKNAME_FAILURE"]:
+        {
+          draft.loadingStates.isLoadingUser = false;
         }
 
       default:
@@ -1545,18 +1616,25 @@ function* watchMakePost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["MAKE_POST_REQUEST"], makePost);
 }
 
-function getPostsAPI() {
-  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/posts", {
-    withCredentials: true
-  });
+function getPostsAPI(data) {
+  if (data) {
+    const {
+      category
+    } = data;
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(`/posts/category/${category}`);
+  } else {
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/posts", {
+      withCredentials: true
+    });
+  }
 }
 
-function* getPosts() {
+function* getPosts(action) {
   try {
-    const Posts = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(getPostsAPI);
+    const Posts = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(getPostsAPI, action.payload);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_SUCCESS"],
-      result: Posts.data.postLists
+      result: Posts.data.postList
     });
   } catch (e) {
     console.error(e);
@@ -1571,8 +1649,34 @@ function* watchGetPosts() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["GET_POSTS_REQUEST"], getPosts);
 }
 
+function fetchPostAPI(data) {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(`/post/category/title`, data, {
+    withCredentials: true
+  });
+}
+
+function* fetchPost(action) {
+  try {
+    const Post = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(fetchPostAPI, action.payload);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_SUCCESS"],
+      result: Post.data.post
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_FAILURE"],
+      error: e.response
+    });
+  }
+}
+
+function* watchFetchPost() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_REQUEST"], fetchPost);
+}
+
 function* postSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchMakePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetPosts)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchMakePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchFetchPost)]);
 }
 
 /***/ }),
@@ -1699,22 +1803,35 @@ function* watchLogout() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_user_actions__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_REQUEST"], logout);
 }
 
-function* userSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogout)]);
+function getUserByNicknameAPI(data) {
+  const {
+    nickname
+  } = data;
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`/user/info/${nickname}`);
 }
 
-/***/ }),
+function* getUserByNickname(action) {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(getUserByNicknameAPI, action.payload);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user_actions__WEBPACK_IMPORTED_MODULE_2__["GET_USER_BY_NICKNAME_SUCCESS"],
+      result: result.data.result
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user_actions__WEBPACK_IMPORTED_MODULE_2__["GET_USER_BY_NICKNAME_FAILURE"]
+    });
+  }
+}
 
-/***/ "./static/images/profile.jpg":
-/*!***********************************!*\
-  !*** ./static/images/profile.jpg ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+function* watchGetUserByNickname() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_user_actions__WEBPACK_IMPORTED_MODULE_2__["GET_USER_BY_NICKNAME_REQUEST"], getUserByNickname);
+}
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "profile.jpg");
+function* userSaga() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogout), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetUserByNickname)]);
+}
 
 /***/ }),
 

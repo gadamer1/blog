@@ -77,7 +77,7 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={require("../../static/images/profile.jpg")}
+            image="../../static/images/profile.jpg"
             title="나는 이런 사람입니다"
           />
           <CardContent>
@@ -94,7 +94,7 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
       </Typography>
       <List>
         {categories.map((obj, index) => (
-          <Link href={`${obj.slug}`}>
+          <Link href={`${obj.slug}`} key={obj.name}>
             <ListItem button key={obj.name}>
               <ListItemIcon>
                 <CategoryIcon />

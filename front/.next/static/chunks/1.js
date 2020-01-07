@@ -87,7 +87,7 @@ var MakePostsForm = function MakePostsForm() {
       isPostingSuccess = _useSelector.isPostingSuccess;
 
   var _useSelector2 = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (state) {
-    return state.user.user;
+    return state.user.me;
   }),
       _id = _useSelector2._id,
       nickname = _useSelector2.nickname; // 포스팅 완료됐으면 튕구기
@@ -23944,7 +23944,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /*!**********************************!*\
   !*** ./reducers/post/actions.ts ***!
   \**********************************/
-/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE */
+/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23958,6 +23958,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_REQUEST", function() { return GET_POSTS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_SUCCESS", function() { return GET_POSTS_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_FAILURE", function() { return GET_POSTS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_REQUEST", function() { return FETCH_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_SUCCESS", function() { return FETCH_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_FAILURE", function() { return FETCH_POST_FAILURE; });
 var MAKE_POST_REQUEST = "MAKE_POST_REQUEST";
 var MAKE_POST_SUCCESS = "MAKE_POST_SUCCESS";
 var MAKE_POST_FAILURE = "MAKE_POST_FAILURE";
@@ -23967,6 +23970,9 @@ var GET_POST_FAILURE = "GET_POST_FAILURE";
 var GET_POSTS_REQUEST = "GET_POSTS_REQUEST";
 var GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";
 var GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
+var FETCH_POST_REQUEST = "FETCH_POST_REQUEST";
+var FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
+var FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 /***/ }),
 

@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\n\nconst IsLoadingUser = () => {\n  return __jsx(React.Fragment, null, __jsx(\"div\", null, \"\\uC720\\uC800 \\uC815\\uBCF4\\uB97C \\uBD88\\uB7EC\\uC624\\uB294 \\uC911\\uC785\\uB2C8\\uB2E4..\"));\n};\n\nexport default IsLoadingUser;","map":null,"metadata":{},"sourceType":"module"}

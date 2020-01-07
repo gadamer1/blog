@@ -10,8 +10,12 @@ import {
   LOAD_USER_FAILURE,
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
-  LOG_OUT_FAILURE
+  LOG_OUT_FAILURE,
+  GET_USER_BY_NICKNAME_REQUEST,
+  GET_USER_BY_NICKNAME_SUCCESS,
+  GET_USER_BY_NICKNAME_FAILURE
 } from "./actions";
+import { post } from "../post/interfaces";
 
 ///////////////STATES////////////////
 
@@ -29,6 +33,7 @@ export interface loadingStates {
   isLoging: boolean;
   isSigning: boolean;
   isLogouting: boolean;
+  isLoadingUser: boolean;
 }
 
 /* meta states */
@@ -108,6 +113,27 @@ export interface logoutFailureAction {
   type: typeof LOG_OUT_FAILURE;
 }
 
+/// 닉네임으로 유저가져오기
+export interface getUserByNicknameRequestAction {
+  type: typeof GET_USER_BY_NICKNAME_REQUEST;
+  payload: {
+    nickname: string;
+  };
+}
+
+export interface getUserByNicknameSuccessAction {
+  type: typeof GET_USER_BY_NICKNAME_SUCCESS;
+  result: {
+    user: user;
+    postList: post[];
+  };
+}
+
+export interface getUserByNicknameFailureAction {
+  type: typeof GET_USER_BY_NICKNAME_FAILURE;
+  error: number;
+}
+
 export type userActions =
   | loginRequestAction
   | loginSuccessAction
@@ -120,9 +146,17 @@ export type userActions =
   | logoutFailureAction
   | loadUserRequestAction
   | loadUserSuccessAction
-  | loadUserFailureAction;
+  | loadUserFailureAction
+  | getUserByNicknameSuccessAction
+  | getUserByNicknameRequestAction
+  | getUserByNicknameFailureAction;
+
 export interface userStore {
-  user: user | null;
+  me: user | null;
+  userInfo: {
+    user: user;
+    postList: post[];
+  } | null;
   loadingStates: loadingStates;
   metaStates: metaStates;
 }

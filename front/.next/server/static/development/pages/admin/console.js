@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -237,25 +237,23 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Console = () => {
   const {
-    user
+    me: user
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(state => state.user);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (!user) {
-      if (!user.admin) {
-        next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/login");
-      }
+    if (!user || !user.admin) {
+      next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/login");
     }
   }, [user]);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_Components_admin_MakeCategories_MakeCategories__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 21
     },
     __self: undefined
   }), __jsx(_Components_admin_MakePosts_MakePostsContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 22
     },
     __self: undefined
   }));
@@ -265,7 +263,7 @@ const Console = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 8:
 /*!***************************************!*\
   !*** multi ./pages/admin/console.tsx ***!
   \***************************************/

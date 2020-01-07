@@ -8,13 +8,11 @@ import { store } from "../../reducers/types";
 import Router from "next/router";
 
 const Console: NextPage = () => {
-  const { user } = useSelector((state: store) => state.user);
+  const { me: user } = useSelector((state: store) => state.user);
 
   useEffect(() => {
-    if (!user) {
-      if (!user.admin) {
-        Router.push("/login");
-      }
+    if (!user || !user.admin) {
+      Router.push("/login");
     }
   }, [user]);
 

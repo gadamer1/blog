@@ -15,3 +15,8 @@ export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE" as const;
 export const LOAD_USER_REQUEST = "LOAD_USER_REQUEST" as const;
 export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS" as const;
 export const LOAD_USER_FAILURE = "LOAD_USER_FAILURE" as const;
+
+// 닉네임으로 유저 가져오기
+export const GET_USER_BY_NICKNAME_REQUEST = "GET_USER_BY_NICKNAME_REQUEST" as const;
+export const GET_USER_BY_NICKNAME_SUCCESS = "GET_USER_BY_NICKNAME_SUCCESS" as const;
+export const GET_USER_BY_NICKNAME_FAILURE = "GET_USER_BY_NICKNAME_FAILURE" as const;

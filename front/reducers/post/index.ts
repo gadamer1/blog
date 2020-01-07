@@ -5,7 +5,13 @@ import {
   GET_POSTS_FAILURE,
   MAKE_POST_REQUEST,
   MAKE_POST_SUCCESS,
-  MAKE_POST_FAILURE
+  MAKE_POST_FAILURE,
+  GET_POST_REQUEST,
+  GET_POST_SUCCESS,
+  GET_POST_FAILURE,
+  FETCH_POST_REQUEST,
+  FETCH_POST_SUCCESS,
+  FETCH_POST_FAILURE
 } from "./actions";
 import { postStore } from "./interfaces";
 
@@ -55,6 +61,38 @@ export default (state = initialState, action) => {
       case MAKE_POST_FAILURE: {
         draft.loadingStates.isPosting = false;
         draft.loadingStates.isPostingSuccess = false;
+        break;
+      }
+
+      case GET_POST_REQUEST: {
+        draft.loadingStates.isPostLoading = true;
+        break;
+      }
+
+      case GET_POST_SUCCESS: {
+        draft.currentPost = action.result;
+        draft.loadingStates.isPostLoading = false;
+        break;
+      }
+      case GET_POST_FAILURE: {
+        draft.loadingStates.isPostLoading = false;
+        break;
+      }
+
+      case FETCH_POST_REQUEST: {
+        draft.loadingStates.isPostLoading = true;
+
+        break;
+      }
+
+      case FETCH_POST_SUCCESS: {
+        draft.currentPost = action.result;
+        draft.loadingStates.isPostLoading = false;
+        break;
+      }
+      case FETCH_POST_FAILURE: {
+        draft.loadingStates.isPostLoading = false;
+
         break;
       }
 

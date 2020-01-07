@@ -58379,25 +58379,23 @@ var Console = function Console() {
   var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(function (state) {
     return state.user;
   }),
-      user = _useSelector.user;
+      user = _useSelector.me;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (!user) {
-      if (!user.admin) {
-        next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/login");
-      }
+    if (!user || !user.admin) {
+      next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/login");
     }
   }, [user]);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_Components_admin_MakeCategories_MakeCategories__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 21
     },
     __self: this
   }), __jsx(_Components_admin_MakePosts_MakePostsContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 22
     },
     __self: this
   }));
@@ -58407,7 +58405,7 @@ var Console = function Console() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 5:
 /*!**********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fadmin%2Fconsole&absolutePagePath=D%3A%5Cwebdev%5Cweb_blog%5Cfront%5Cpages%5Cadmin%5Cconsole.tsx ***!
   \**********************************************************************************************************************************************/
@@ -58430,5 +58428,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[5,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=console.js.map

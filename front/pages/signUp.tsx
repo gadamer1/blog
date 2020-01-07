@@ -30,12 +30,12 @@ const useStyles = makeStyles(theme => ({
 const SignUp = () => {
   const classes = useStyles({});
   const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
-  const { nickname } = useSelector((state: store) => state.user.user);
+  const me = useSelector((state: store) => state.user.me);
   useEffect(() => {
-    if (isLoggedIn) {
-      Router.push(`/profile/${nickname}`);
+    if (isLoggedIn && me) {
+      Router.push(`/profile/${me.nickname}`);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, me]);
 
   return (
     <>

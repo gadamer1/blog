@@ -8,7 +8,7 @@ import { LOG_OUT_REQUEST } from "../../reducers/user/actions";
 
 const Auth: React.FC = () => {
   const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
-  const user = useSelector((state: store) => state.user.user);
+  const user = useSelector((state: store) => state.user.me);
   const dispatch = useDispatch();
 
   const _onClickLogout = () => {
@@ -22,14 +22,14 @@ const Auth: React.FC = () => {
     return (
       <>
         {user && <Typography>반갑습니다 {user.nickname}님</Typography>}
-        <Button color="inherit" href="profile">
+        <Button color="inherit" href={`/profile/${user.nickname}`}>
           <Typography>프로필</Typography>
         </Button>
         <Button color="inherit" onClick={_onClickLogout}>
           <Typography>로그아웃</Typography>
         </Button>
         {user.admin && (
-          <Button color="inherit" href="admin/console">
+          <Button color="inherit" href="/admin/console">
             <Typography>콘솔</Typography>
           </Button>
         )}

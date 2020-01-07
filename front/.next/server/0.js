@@ -89,7 +89,7 @@ const MakePostsForm = () => {
   const {
     _id,
     nickname
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(state => state.user.user); // 포스팅 완료됐으면 튕구기
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(state => state.user.me); // 포스팅 완료됐으면 튕구기
 
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(() => {
     if (isPostingSuccess) {
@@ -342,7 +342,7 @@ module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "core-js/
 /*!**********************************!*\
   !*** ./reducers/post/actions.ts ***!
   \**********************************/
-/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE */
+/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -356,6 +356,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_REQUEST", function() { return GET_POSTS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_SUCCESS", function() { return GET_POSTS_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POSTS_FAILURE", function() { return GET_POSTS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_REQUEST", function() { return FETCH_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_SUCCESS", function() { return FETCH_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_FAILURE", function() { return FETCH_POST_FAILURE; });
 const MAKE_POST_REQUEST = "MAKE_POST_REQUEST";
 const MAKE_POST_SUCCESS = "MAKE_POST_SUCCESS";
 const MAKE_POST_FAILURE = "MAKE_POST_FAILURE";
@@ -365,6 +368,9 @@ const GET_POST_FAILURE = "GET_POST_FAILURE";
 const GET_POSTS_REQUEST = "GET_POSTS_REQUEST";
 const GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";
 const GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
+const FETCH_POST_REQUEST = "FETCH_POST_REQUEST";
+const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
+const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 /***/ }),
 

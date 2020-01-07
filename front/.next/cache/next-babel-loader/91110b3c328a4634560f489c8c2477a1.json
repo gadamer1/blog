@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport { Link } from \"@material-ui/core\";\n\nvar Home = function Home() {\n  return __jsx(Link, {\n    href: \"/postList\"\n  }, \"\\uD3EC\\uC2A4\\uD2B8\\uB4E4\");\n};\n\nexport default Home;","map":null,"metadata":{},"sourceType":"module"}

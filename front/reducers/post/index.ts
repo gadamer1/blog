@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
       case MAKE_POST_SUCCESS: {
         draft.loadingStates.isPostingSuccess = true;
         draft.loadingStates.isPosting = false;
-        draft.posts = action.result;
+        draft.currentPost = action.result;
         break;
       }
       case MAKE_POST_FAILURE: {

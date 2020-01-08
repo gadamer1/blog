@@ -8,12 +8,46 @@ import {
 } from "../../../reducers/post/actions";
 import { store } from "../../../reducers/types";
 import Renderer from "../../../Components/draft/Renderer";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Grid,
+  Typography,
+  Chip
+} from "@material-ui/core";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { Face as FaceIcon } from "@material-ui/icons";
+import Router from "next/router";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100%",
+      backgroundColor: theme.palette.background.paper,
+      justifyContent: "center",
+      margin: "100px"
+    },
+    container: {
+      marginBottom: "200px"
+    },
+    title: {
+      border: "1px solid black"
+    }
+  })
+);
 
 const Post = () => {
+  const classes = useStyles({});
   const { currentPost } = useSelector((state: store) => state.post);
   const { isPostLoading } = useSelector(
     (state: store) => state.post.loadingStates
   );
+
+  const _onClickNickname = nickname => () => {
+    Router.push(`/profile/${nickname}`);
+  };
+
   if (isPostLoading) {
     return (
       <>
@@ -22,12 +56,28 @@ const Post = () => {
     );
   } else {
     return (
-      <>
-        <h1>{currentPost.title}</h1>
-        <h1>{currentPost.nickname}</h1>
-        <h1>{currentPost.Date}</h1>
+      <div className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid item xs={6}>
+            <Typography variant="h4">
+              타이틀
+              <Typography variant="h5" color="primary">
+                {currentPost.title}
+              </Typography>
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Chip
+              icon={<FaceIcon />}
+              onClick={_onClickNickname(currentPost.nickname)}
+              label={currentPost.nickname}
+            />
+            <Typography color="textSecondary">{currentPost.Date}</Typography>
+          </Grid>
+        </Grid>
+
         {currentPost && <Renderer raw={JSON.parse(currentPost.body)} />}
-      </>
+      </div>
     );
   }
 };

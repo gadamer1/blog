@@ -63,7 +63,7 @@ const MakePostsForm = () => {
       window.localStorage.removeItem("title");
       window.localStorage.removeItem("content");
 
-      Router.push("/postList");
+      Router.push(`/post/${category}/${title}`);
     }
   }, [isPostingSuccess]);
   useEffect(() => {

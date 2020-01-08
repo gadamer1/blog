@@ -8,7 +8,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://gadamer1.com/">
+      <Link color="inherit" href="https://front.gadamer1.now.sh/">
         가다머의 블로그
       </Link>{" "}
       {new Date().getFullYear()}

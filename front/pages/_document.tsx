@@ -25,6 +25,10 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
           <meta charSet="utf-8" />
           <meta
             name="viewport"

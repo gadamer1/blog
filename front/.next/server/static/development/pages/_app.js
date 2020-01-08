@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Layouts_Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Layouts/Header/Header */ "./Layouts/Header/Header.tsx");
 /* harmony import */ var _Layouts_Footer_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Layouts/Footer/Footer */ "./Layouts/Footer/Footer.tsx");
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\AppLayout.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\AppLayout.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
  // COMPONENTS
@@ -194,7 +194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Link */ "@material-ui/core/Link");
 /* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Footer\\Footer.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Footer\\Footer.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -214,7 +214,7 @@ function Copyright() {
     __self: this
   }, "Copyright © ", __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4___default.a, {
     color: "inherit",
-    href: "https://gadamer1.com/",
+    href: "https://front.gadamer1.now.sh/",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
@@ -299,7 +299,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_token__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/token */ "./utils/token.js");
 /* harmony import */ var _reducers_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../reducers/user/actions */ "./reducers/user/actions.ts");
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Header\\Auth.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Header\\Auth.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -325,7 +325,7 @@ const Auth = () => {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, user && __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 23
       },
       __self: undefined
     }, "\uBC18\uAC11\uC2B5\uB2C8\uB2E4 ", user.nickname, "\uB2D8"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -333,13 +333,13 @@ const Auth = () => {
       href: `/profile/${user.nickname}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 24
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 25
       },
       __self: undefined
     }, "\uD504\uB85C\uD544")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -347,13 +347,13 @@ const Auth = () => {
       onClick: _onClickLogout,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 27
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 28
       },
       __self: undefined
     }, "\uB85C\uADF8\uC544\uC6C3")), user.admin && __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -361,13 +361,13 @@ const Auth = () => {
       href: "/admin/console",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32
+        lineNumber: 31
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 33
+        lineNumber: 32
       },
       __self: undefined
     }, "\uCF58\uC194")));
@@ -377,13 +377,13 @@ const Auth = () => {
       href: "/login",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 40
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 41
       },
       __self: undefined
     }, "\uB85C\uADF8\uC778")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -391,13 +391,13 @@ const Auth = () => {
       href: "/signup",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 43
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 44
       },
       __self: undefined
     }, "\uD68C\uC6D0 \uAC00\uC785")));
@@ -426,7 +426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LeftDrawer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LeftDrawer */ "./Layouts/Header/LeftDrawer.tsx");
 /* harmony import */ var _SearchInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchInput */ "./Layouts/Header/SearchInput.tsx");
 /* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Auth */ "./Layouts/Header/Auth.tsx");
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Header\\Header.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Header\\Header.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -511,7 +511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons */ "@material-ui/icons");
 /* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _LeftDrawerList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LeftDrawerList */ "./Layouts/Header/LeftDrawerList.tsx");
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Header\\LeftDrawer.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Header\\LeftDrawer.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -597,11 +597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons */ "@material-ui/icons");
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Header\\LeftDrawerList.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Header\\LeftDrawerList.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
 
 
 
@@ -610,7 +607,8 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     flexGrow: 1
   },
   list: {
-    width: 250
+    width: 250,
+    justifyItems: "center"
   },
   fullList: {
     width: "auto"
@@ -625,23 +623,27 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     height: 140
   },
   categoryTitle: {
-    flexGrow: 1,
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
+    padding: "10px"
   }
 }));
 const categories = [{
   name: "개발",
-  slug: "/post/dev"
+  slug: "/post/dev",
+  icon: "important_devices"
 }, {
   name: "해킹",
-  slug: "/post/hacking"
+  slug: "/post/hacking",
+  icon: "change_history"
 }, {
   name: "재테크",
-  slug: "/post/finance"
+  slug: "/post/finance",
+  icon: "attach_money"
 }, {
   name: "비즈니스",
-  slug: "/post/business"
+  slug: "/post/business",
+  icon: "business"
 }];
 
 const LeftDrawerList = ({
@@ -655,35 +657,35 @@ const LeftDrawerList = ({
     onKeyDown: toggleDrawer(false),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 76
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Card"], {
     className: classes.card,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 82
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardActionArea"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 83
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardMedia"], {
     className: classes.media,
     image: "../../static/images/profile.jpg",
-    title: "\uB098\uB294 \uC774\uB7F0 \uC0AC\uB78C\uC785\uB2C8\uB2E4",
+    title: "gadamer1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 84
     },
     __self: undefined
   }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardContent"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 89
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
@@ -691,13 +693,13 @@ const LeftDrawerList = ({
     variant: "h5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 90
     },
     __self: undefined
-  }, "\uB098\uB294 \uC774\uB7F0 \uC0AC\uB78C\uC785\uB2C8\uB2E4")))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
+  }, "gadamer1")))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 97
     },
     __self: undefined
   }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
@@ -705,13 +707,13 @@ const LeftDrawerList = ({
     gutterBottom: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 98
     },
     __self: undefined
   }, "\uCE74\uD14C\uACE0\uB9AC"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["List"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 101
     },
     __self: undefined
   }, categories.map((obj, index) => __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -719,7 +721,7 @@ const LeftDrawerList = ({
     key: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 103
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItem"], {
@@ -727,26 +729,26 @@ const LeftDrawerList = ({
     key: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 104
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemIcon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 105
     },
     __self: undefined
-  }, __jsx(_material_ui_icons__WEBPACK_IMPORTED_MODULE_3__["Category"], {
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 106
     },
     __self: undefined
-  })), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemText"], {
+  }, obj.icon)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemText"], {
     primary: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 108
     },
     __self: undefined
   }))))));
@@ -773,7 +775,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons */ "@material-ui/icons");
 /* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\Layouts\\Header\\SearchInput.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\Layouts\\Header\\SearchInput.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -1058,7 +1060,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _reducers_user_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../reducers/user/actions */ "./reducers/user/actions.ts");
 
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\pages\\_app.tsx";
+var _jsxFileName = "D:\\webdev\\blog\\front\\pages\\_app.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -1286,7 +1288,7 @@ const initialState = {
         {
           draft.loadingStates.isPostingSuccess = true;
           draft.loadingStates.isPosting = false;
-          draft.posts = action.result;
+          draft.currentPost = action.result;
           break;
         }
 
@@ -1558,7 +1560,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://localhost:7777/api";
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "https://gadamer1-blog.appspot.com/api";
 function* rootSaga() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_2__["default"])]);
 }
@@ -1881,7 +1883,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "D:\\webdev\\web_blog\\front\\utils\\token.js";
+var _jsxFileName = "D:\\webdev\\blog\\front\\utils\\token.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }

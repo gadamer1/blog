@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { store } from "../../reducers/types";
 import { Typography, Button } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { JWTlogout } from "../../utils/token";
 import { LOG_OUT_REQUEST } from "../../reducers/user/actions";
 

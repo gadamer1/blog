@@ -11,7 +11,8 @@ import {
   Typography,
   CardActionArea,
   CardMedia,
-  CardContent
+  CardContent,
+  Icon
 } from "@material-ui/core";
 import { Category as CategoryIcon } from "@material-ui/icons";
 
@@ -21,7 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     list: {
-      width: 250
+      width: 250,
+      justifyItems: "center"
     },
     fullList: {
       width: "auto"
@@ -36,9 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 140
     },
     categoryTitle: {
-      flexGrow: 1,
       justifyContent: "center",
-      alignContent: "center"
+      alignContent: "center",
+      padding: "10px"
     }
   })
 );
@@ -46,19 +48,23 @@ const useStyles = makeStyles((theme: Theme) =>
 const categories = [
   {
     name: "개발",
-    slug: "/post/dev"
+    slug: "/post/dev",
+    icon: "important_devices"
   },
   {
     name: "해킹",
-    slug: "/post/hacking"
+    slug: "/post/hacking",
+    icon: "change_history"
   },
   {
     name: "재테크",
-    slug: "/post/finance"
+    slug: "/post/finance",
+    icon: "attach_money"
   },
   {
     name: "비즈니스",
-    slug: "/post/business"
+    slug: "/post/business",
+    icon: "business"
   }
 ];
 
@@ -78,11 +84,11 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
           <CardMedia
             className={classes.media}
             image="../../static/images/profile.jpg"
-            title="나는 이런 사람입니다"
+            title="gadamer1"
           />
           <CardContent>
             <Typography gutterBottom variant="h5">
-              나는 이런 사람입니다
+              gadamer1
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -97,7 +103,7 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
           <Link href={`${obj.slug}`} key={obj.name}>
             <ListItem button key={obj.name}>
               <ListItemIcon>
-                <CategoryIcon />
+                <Icon>{obj.icon}</Icon>
               </ListItemIcon>
               <ListItemText primary={obj.name} />
             </ListItem>

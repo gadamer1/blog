@@ -100,7 +100,11 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
       </Typography>
       <List>
         {categories.map((obj, index) => (
-          <Link href={`${obj.slug}`} key={obj.name}>
+          <Link
+            href={`${obj.slug}`}
+            key={obj.name}
+            style={{ textDecoration: "none" }}
+          >
             <ListItem button key={obj.name}>
               <ListItemIcon>
                 <Icon>{obj.icon}</Icon>

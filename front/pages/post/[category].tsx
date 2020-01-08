@@ -95,7 +95,11 @@ const Post = () => {
             posts.map(post => {
               return (
                 <>
-                  <Link href={`/post/${category}/${post.title}`} key={post._id}>
+                  <Link
+                    href={`/post/${category}/${post.title}`}
+                    key={post._id}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Grid key={post._id} item xs={6}>
                       <Paper className={classes.paper}>
                         <Typography variant="h5">{post.title}</Typography>

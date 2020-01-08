@@ -719,6 +719,9 @@ const LeftDrawerList = ({
   }, categories.map((obj, index) => __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: `${obj.slug}`,
     key: obj.name,
+    style: {
+      textDecoration: "none"
+    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 103
@@ -729,26 +732,26 @@ const LeftDrawerList = ({
     key: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104
+      lineNumber: 108
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemIcon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 109
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 110
     },
     __self: undefined
   }, obj.icon)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemText"], {
     primary: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 112
     },
     __self: undefined
   }))))));
@@ -1560,7 +1563,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "https://gadamer1-blog.appspot.com/api";
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://localhost:8080/api";
 function* rootSaga() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_2__["default"])]);
 }

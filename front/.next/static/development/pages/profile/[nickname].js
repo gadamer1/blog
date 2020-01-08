@@ -51525,15 +51525,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 var Profile = function Profile() {
   var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
-    return state.user.metaStates;
+    return state.user.loadingStates;
   }),
-      isLoggedIn = _useSelector.isLoggedIn;
+      isLoadingUser = _useSelector.isLoadingUser;
 
-  if (isLoggedIn) {
+  if (!isLoadingUser) {
     return __jsx(_Components_profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 15
       },
       __self: this
     });
@@ -51541,7 +51541,7 @@ var Profile = function Profile() {
     return __jsx(_Components_IsLoadingUser__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 17
       },
       __self: this
     });

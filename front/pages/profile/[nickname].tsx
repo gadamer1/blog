@@ -7,9 +7,11 @@ import { GET_USER_BY_NICKNAME_REQUEST } from "../../reducers/user/actions";
 import ProfileContaier from "../../Components/profile/ProfileContainer";
 
 const Profile = () => {
-  const { isLoggedIn } = useSelector((state: store) => state.user.metaStates);
+  const { isLoadingUser } = useSelector(
+    (state: store) => state.user.loadingStates
+  );
 
-  if (isLoggedIn) {
+  if (!isLoadingUser) {
     return <ProfileContaier />;
   } else {
     return <IsLoadingUser />;

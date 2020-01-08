@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Grid, Paper, Link } from "@material-ui/core";
+import { Grid, Paper, Link, Typography } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { store } from "../../reducers/types";
 import PostList from "../../pages/postList";
@@ -19,10 +19,32 @@ const PostListContainer = () => {
   return (
     <div>
       <Grid container spacing={3}>
-        <Link href="/post/dev">개발</Link>
-        <Link href="/post/hacking">해킹</Link>
-        <Link href="/post/finance">재태크</Link>
-        <Link href="/post/business">비즈니스</Link>
+        <Grid item xs={6}>
+          <Link href="/post/dev" style={{ textDecoration: "none" }}>
+            <Typography variant="h2" color="primary">
+              개발
+            </Typography>
+          </Link>
+        </Grid>
+        <Grid item xs={6}>
+          <Link href="/post/hacking" style={{ textDecoration: "none" }}>
+            <Typography variant="h2" color="error">
+              해킹
+            </Typography>
+          </Link>
+        </Grid>
+        <Grid item xs={6}>
+          <Link href="/post/finance" style={{ textDecoration: "none" }}>
+            <Typography variant="h2">재태크</Typography>
+          </Link>
+        </Grid>
+        <Grid item xs={6}>
+          <Link href="/post/business" style={{ textDecoration: "none" }}>
+            <Typography variant="h2" color="textSecondary">
+              비즈니스
+            </Typography>
+          </Link>
+        </Grid>
       </Grid>
     </div>
   );

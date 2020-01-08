@@ -57348,6 +57348,9 @@ var Post = function Post() {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Link"], {
       href: "/post/".concat(category, "/").concat(post.title),
       key: post._id,
+      style: {
+        textDecoration: "none"
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 98
@@ -57359,35 +57362,35 @@ var Post = function Post() {
       xs: 6,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 103
       },
       __self: this
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Paper"], {
       className: classes.paper,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 104
       },
       __self: this
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
       variant: "h5",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 101
+        lineNumber: 105
       },
       __self: this
     }, post.title), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
       variant: "h6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 106
       },
       __self: this
     }, post.nickname), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
       variant: "inherit",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 107
       },
       __self: this
     }, post.Date)))));
@@ -57456,7 +57459,7 @@ var FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 /***/ }),
 
-/***/ 1:
+/***/ 4:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fpost%2F%5Bcategory%5D&absolutePagePath=D%3A%5Cwebdev%5Cblog%5Cfront%5Cpages%5Cpost%5C%5Bcategory%5D.tsx ***!
   \******************************************************************************************************************************************************/
@@ -57479,5 +57482,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[category].js.map

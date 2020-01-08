@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -259,6 +259,9 @@ const Post = () => {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Link"], {
       href: `/post/${category}/${post.title}`,
       key: post._id,
+      style: {
+        textDecoration: "none"
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 98
@@ -270,35 +273,35 @@ const Post = () => {
       xs: 6,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 103
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Paper"], {
       className: classes.paper,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 104
       },
       __self: undefined
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       variant: "h5",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 101
+        lineNumber: 105
       },
       __self: undefined
     }, post.title), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       variant: "h6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 106
       },
       __self: undefined
     }, post.nickname), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       variant: "inherit",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 107
       },
       __self: undefined
     }, post.Date)))));
@@ -357,7 +360,7 @@ const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************************!*\
   !*** multi ./pages/post/[category].tsx ***!
   \*****************************************/

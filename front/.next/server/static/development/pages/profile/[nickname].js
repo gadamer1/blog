@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -352,14 +352,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Profile = () => {
   const {
-    isLoggedIn
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.metaStates);
+    isLoadingUser
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user.loadingStates);
 
-  if (isLoggedIn) {
+  if (!isLoadingUser) {
     return __jsx(_Components_profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 15
       },
       __self: undefined
     });
@@ -367,7 +367,7 @@ const Profile = () => {
     return __jsx(_Components_IsLoadingUser__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 17
       },
       __self: undefined
     });
@@ -436,7 +436,7 @@ const GET_USER_BY_NICKNAME_FAILURE = "GET_USER_BY_NICKNAME_FAILURE";
 
 /***/ }),
 
-/***/ 5:
+/***/ 7:
 /*!********************************************!*\
   !*** multi ./pages/profile/[nickname].tsx ***!
   \********************************************/

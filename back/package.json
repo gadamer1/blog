@@ -1,16 +1,17 @@
 {
   "name": "back",
   "version": "1.0.0",
-  "description": "",
+  "description": "gadamer1 blog backend",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
-    "build": "tsc"
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node ./dist/server"
   },
   "engines": {
     "node": "12.14.0"
   },
-  "author": "",
+  "author": "gadamer1",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

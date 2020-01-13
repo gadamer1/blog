@@ -6331,7 +6331,7 @@ var Index = function Index() {
 
 /***/ }),
 
-/***/ 0:
+/***/ 4:
 /*!*****************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5Cwebdev%5Cblog%5Cfront%5Cpages%5Cindex.tsx ***!
   \*****************************************************************************************************************/
@@ -6354,5 +6354,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js","styles"]]]);
+},[[4,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

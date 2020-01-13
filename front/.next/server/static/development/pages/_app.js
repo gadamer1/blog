@@ -1501,6 +1501,7 @@ const mockUser = {
           draft.metaStates.loginStautsCode = 200;
           draft.metaStates.isLoggedIn = true;
           draft.me = action.result.user;
+          document.cookie = `X-Access-Token=${action.result["X-Access-Token"]}`;
           break;
         }
 
@@ -1544,6 +1545,7 @@ const mockUser = {
           draft.me = null;
           draft.loadingStates.isLogouting = false;
           draft.metaStates.isLoggedIn = false;
+          document.cookie = "X-Access-Token=";
         }
 
       case _actions__WEBPACK_IMPORTED_MODULE_1__["LOG_OUT_FAILURE"]:

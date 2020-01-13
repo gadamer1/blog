@@ -57,6 +57,7 @@ export interface loginSuccessAction {
   type: typeof LOGIN_SUCCESS;
   result: {
     user: user;
+    "X-Access-Token": string;
   };
 }
 export interface loginFailureAction {

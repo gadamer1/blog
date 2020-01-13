@@ -34,8 +34,8 @@ const UserPostList: NextPage<{ postList: post[] }> = ({ postList }) => {
       {postList.map(post => {
         return (
           <>
-            <Divider variant="inset" component="li" />
-            <ListItem alignItems="flex-start">
+            <Divider variant="inset" component="li" key={post._id} />
+            <ListItem alignItems="flex-start" key={post._id}>
               <ListItemText
                 primary={post.title}
                 secondary={

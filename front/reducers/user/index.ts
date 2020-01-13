@@ -52,6 +52,7 @@ export default (state = initialState, action: userActions) => {
         draft.metaStates.loginStautsCode = 200;
         draft.metaStates.isLoggedIn = true;
         draft.me = action.result.user;
+        document.cookie = `X-Access-Token=${action.result["X-Access-Token"]}`;
         break;
       }
       case LOGIN_FAILURE: {
@@ -83,6 +84,7 @@ export default (state = initialState, action: userActions) => {
         draft.me = null;
         draft.loadingStates.isLogouting = false;
         draft.metaStates.isLoggedIn = false;
+        document.cookie = "X-Access-Token=";
       }
       case LOG_OUT_FAILURE: {
         draft.loadingStates.isLogouting = false;

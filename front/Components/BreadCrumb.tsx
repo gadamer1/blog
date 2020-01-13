@@ -9,12 +9,12 @@ const Breadcrumb = props => {
         home
       </Link>
       {category && (
-        <Link color="inherit" href={`post/${category}`}>
+        <Link color="inherit" href={`/post/${category}`}>
           {category}
         </Link>
       )}
       {title && (
-        <Link color="inherit" href={`post/${category}/${title}`}>
+        <Link color="inherit" href={`/post/${category}/${title}`}>
           {title}
         </Link>
       )}

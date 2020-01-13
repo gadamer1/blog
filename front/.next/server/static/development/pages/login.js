@@ -160,11 +160,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _reducers_user_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../reducers/user/actions */ "./reducers/user/actions.ts");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/Components/CircularProgressComponent */ "./utils/Components/CircularProgressComponent.tsx");
-/* harmony import */ var _utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/validateEmailInput */ "./utils/validateEmailInput.ts");
-/* harmony import */ var _Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Components/IsAleadyLoggedIn */ "./Components/IsAleadyLoggedIn.tsx");
+/* harmony import */ var _utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../utils/Components/CircularProgressComponent */ "./utils/Components/CircularProgressComponent.tsx");
+/* harmony import */ var _utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/validateEmailInput */ "./utils/validateEmailInput.ts");
+/* harmony import */ var _Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Components/IsAleadyLoggedIn */ "./Components/IsAleadyLoggedIn.tsx");
 var _jsxFileName = "D:\\webdev\\blog\\front\\pages\\login.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -182,8 +180,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
- // loading component
-
+// loading component
  // validate email
 
 
@@ -234,17 +231,12 @@ const Login = () => {
     0: passwordError,
     1: setPasswordError
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (isLoggedIn) {
-      next_router__WEBPACK_IMPORTED_MODULE_15___default.a.push("/");
-    }
-  }, [isLoggedIn]);
 
   const handleSubmit = event => {
     event.preventDefault();
     let validate = true;
 
-    if (!Object(_utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_17__["default"])(email)) {
+    if (!Object(_utils_validateEmailInput__WEBPACK_IMPORTED_MODULE_16__["default"])(email)) {
       setEmailError("올바르지 않은 이메일 주소입니다.");
       validate = false;
     }
@@ -286,10 +278,10 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, isLoggedIn ? __jsx(_Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_18__["default"], {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, isLoggedIn ? __jsx(_Components_IsAleadyLoggedIn__WEBPACK_IMPORTED_MODULE_17__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 101
     },
     __self: undefined
   }) : __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_13___default.a, {
@@ -297,33 +289,33 @@ const Login = () => {
     maxWidth: "xs",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 103
     },
     __self: undefined
   }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 104
     },
     __self: undefined
   }), __jsx("div", {
     className: classes.paper,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 105
     },
     __self: undefined
   }, __jsx(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     className: classes.avatar,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 106
     },
     __self: undefined
   }, __jsx(_material_ui_icons_LockOutlined__WEBPACK_IMPORTED_MODULE_10___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 107
     },
     __self: undefined
   })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11___default.a, {
@@ -331,7 +323,7 @@ const Login = () => {
     variant: "h5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 109
     },
     __self: undefined
   }, "\uB85C\uADF8\uC778"), __jsx("form", {
@@ -340,7 +332,7 @@ const Login = () => {
     onSubmit: handleSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 112
     },
     __self: undefined
   }, __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -359,7 +351,7 @@ const Login = () => {
     helperText: emailError,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 113
     },
     __self: undefined
   }), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -378,7 +370,7 @@ const Login = () => {
     helperText: passwordError,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 128
     },
     __self: undefined
   }), __jsx(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -387,14 +379,14 @@ const Login = () => {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 150
+        lineNumber: 144
       },
       __self: undefined
     }),
     label: "\uB85C\uADF8\uC778 \uC0C1\uD0DC \uC720\uC9C0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 143
     },
     __self: undefined
   }), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -406,26 +398,26 @@ const Login = () => {
     disabled: isLoging,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153
+      lineNumber: 147
     },
     __self: undefined
-  }, isLoging ? __jsx(_utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_16__["default"], {
+  }, isLoging ? __jsx(_utils_Components_CircularProgressComponent__WEBPACK_IMPORTED_MODULE_15__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 156
     },
     __self: undefined
   }) : __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164
+      lineNumber: 158
     },
     __self: undefined
   }, "\uB85C\uADF8\uC778")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
     container: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167
+      lineNumber: 161
     },
     __self: undefined
   }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
@@ -433,7 +425,7 @@ const Login = () => {
     xs: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 168
+      lineNumber: 162
     },
     __self: undefined
   }, __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -441,14 +433,14 @@ const Login = () => {
     variant: "body2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169
+      lineNumber: 163
     },
     __self: undefined
   }, "\uBE44\uBC00\uBC88\uD638\uB97C \uC78A\uC73C\uC168\uB098\uC694?")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9___default.a, {
     item: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173
+      lineNumber: 167
     },
     __self: undefined
   }, __jsx(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -456,7 +448,7 @@ const Login = () => {
     variant: "body2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174
+      lineNumber: 168
     },
     __self: undefined
   }, "계정이 없으신가요? 회원가입")))))));
@@ -729,17 +721,6 @@ module.exports = require("@material-ui/core/styles");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/LockOutlined");
-
-/***/ }),
-
-/***/ "next/router":
-/*!******************************!*\
-  !*** external "next/router" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next/router");
 
 /***/ }),
 

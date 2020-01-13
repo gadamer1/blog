@@ -1,31 +1,13 @@
 {
   "./MakePostsForm": [
     {
-      "id": "./Components/home/App.css",
-      "name": "./Components/home/App.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": 1,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": 2,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
       "id": "./node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css",
       "name": "./node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 6,
+      "id": 2,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"

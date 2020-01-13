@@ -55,12 +55,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      Router.push("/");
-    }
-  }, [isLoggedIn]);
-
   const handleSubmit = event => {
     event.preventDefault();
     let validate = true;

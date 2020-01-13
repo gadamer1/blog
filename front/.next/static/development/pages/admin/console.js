@@ -58457,7 +58457,7 @@ var Console = function Console() {
 
 /***/ }),
 
-/***/ 5:
+/***/ 1:
 /*!******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fadmin%2Fconsole&absolutePagePath=D%3A%5Cwebdev%5Cblog%5Cfront%5Cpages%5Cadmin%5Cconsole.tsx ***!
   \******************************************************************************************************************************************/
@@ -58480,5 +58480,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=console.js.map

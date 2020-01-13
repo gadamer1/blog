@@ -38,10 +38,13 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <link rel="stylesheet" />
           <link
-            rel="stylesheet"
-            
-          />
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="../static/images/favicon-16x16.png"
+          ></link>
         </Head>
         <body>
           <Main />

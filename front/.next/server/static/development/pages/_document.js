@@ -1594,22 +1594,32 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_9___default.a {
         lineNumber: 41
       },
       __self: this
+    }), __jsx("link", {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      href: "../static/images/favicon-16x16.png",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42
+      },
+      __self: this
     })), __jsx("body", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 49
       },
       __self: this
     }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_9__["Main"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 50
       },
       __self: this
     }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_9__["NextScript"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 51
       },
       __self: this
     })));

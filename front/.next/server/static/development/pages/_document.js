@@ -1587,22 +1587,29 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_9___default.a {
         lineNumber: 37
       },
       __self: this
+    }), __jsx("link", {
+      rel: "stylesheet",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41
+      },
+      __self: this
     })), __jsx("body", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 46
       },
       __self: this
     }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_9__["Main"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 47
       },
       __self: this
     }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_9__["NextScript"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 48
       },
       __self: this
     })));

@@ -1,9 +1,10 @@
 import React from "react";
 import { NextPage } from "next";
 import { Link } from "@material-ui/core";
+import Home from "../Components/home/Home";
 
-const Home: NextPage = () => {
-  return <Link href="/postList">포스트들</Link>;
+const Index: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default Index;

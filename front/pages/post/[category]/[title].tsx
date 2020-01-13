@@ -14,11 +14,13 @@ import {
   ListItemText,
   Grid,
   Typography,
-  Chip
+  Chip,
+  Breadcrumbs
 } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Face as FaceIcon } from "@material-ui/icons";
 import Router from "next/router";
+import Breadcrumb from "../../../Components/BreadCrumb";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,6 +46,8 @@ const Post = () => {
     (state: store) => state.post.loadingStates
   );
 
+  const { category, title } = useRouter().query;
+
   const _onClickNickname = nickname => () => {
     Router.push(`/profile/${nickname}`);
   };
@@ -57,6 +61,7 @@ const Post = () => {
   } else {
     return (
       <div className={classes.root}>
+        <Breadcrumb category={category} title={title} />
         <Grid container className={classes.container}>
           <Grid item xs={6}>
             <Typography variant="h4">

@@ -155,6 +155,9 @@ const AppLayout = ({
     item: true,
     className: "footer",
     xs: 12,
+    style: {
+      paddingTop: "100px"
+    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19
@@ -445,6 +448,20 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     flexGrow: 1
   }
 }));
+const customTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["createMuiTheme"])({
+  palette: {
+    primary: {
+      main: "#212121",
+      light: "#484848",
+      dark: "#000000"
+    },
+    secondary: {
+      main: "#424242",
+      light: "#6d6d6d",
+      dark: "#1b1b1b"
+    }
+  }
+});
 
 const Header = () => {
   const classes = useStyles({});
@@ -452,41 +469,48 @@ const Header = () => {
     className: classes.root,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 49
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
+    theme: customTheme,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["AppBar"], {
     position: "static",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 51
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Toolbar"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 52
     },
     __self: undefined
   }, __jsx(_LeftDrawer__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 53
     },
     __self: undefined
   }), __jsx(_SearchInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 54
     },
     __self: undefined
   }), __jsx(_Auth__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 55
     },
     __self: undefined
-  }))));
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -660,17 +684,24 @@ const LeftDrawerList = ({
       lineNumber: 76
     },
     __self: undefined
-  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Card"], {
-    className: classes.card,
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: "/",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 82
     },
     __self: undefined
-  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardActionArea"], {
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+    className: classes.card,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 83
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardActionArea"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardMedia"], {
@@ -679,13 +710,13 @@ const LeftDrawerList = ({
     title: "gadamer1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 85
     },
     __self: undefined
   }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["CardContent"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 90
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
@@ -693,13 +724,13 @@ const LeftDrawerList = ({
     variant: "h5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 91
     },
     __self: undefined
-  }, "gadamer1")))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
+  }, "gadamer1"))))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 99
     },
     __self: undefined
   }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
@@ -707,13 +738,13 @@ const LeftDrawerList = ({
     gutterBottom: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 100
     },
     __self: undefined
   }, "\uCE74\uD14C\uACE0\uB9AC"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["List"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 103
     },
     __self: undefined
   }, categories.map((obj, index) => __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -724,7 +755,7 @@ const LeftDrawerList = ({
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 105
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItem"], {
@@ -732,26 +763,26 @@ const LeftDrawerList = ({
     key: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 110
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemIcon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 111
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 112
     },
     __self: undefined
   }, obj.icon)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["ListItemText"], {
     primary: obj.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 114
     },
     __self: undefined
   }))))));
@@ -1062,6 +1093,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _reducers_user_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../reducers/user/actions */ "./reducers/user/actions.ts");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__);
 
 var _jsxFileName = "D:\\webdev\\blog\\front\\pages\\_app.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -1078,6 +1111,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
+const customTheme = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__["createMuiTheme"])({
+  palette: {
+    primary: {
+      main: "#212121",
+      light: "#484848",
+      dark: "#000000"
+    },
+    secondary: {
+      main: "#424242",
+      light: "#6d6d6d",
+      dark: "#1b1b1b"
+    }
+  }
+});
 
 const Blog = ({
   Component,
@@ -1096,34 +1144,41 @@ const Blog = ({
     store: store,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 45
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 46
     },
     __self: undefined
-  }, "\uAC00\uB2E4\uBA38\uC758 \uBE14\uB85C\uADF8")), __jsx(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }, "\uAC00\uB2E4\uBA38\uC758 \uBE14\uB85C\uADF8")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__["ThemeProvider"], {
+    theme: customTheme,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 48
+    },
+    __self: undefined
+  }, __jsx(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
     },
     __self: undefined
   }, __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 50
     },
     __self: undefined
-  }))));
+  })))));
 };
 
 Blog.getInitialProps = async context => {
@@ -1563,7 +1618,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://localhost:8080/api";
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "https://gadamer1-blog.appspot.com/api";
 function* rootSaga() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_2__["default"])]);
 }

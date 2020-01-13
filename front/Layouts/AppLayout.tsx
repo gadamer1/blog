@@ -16,7 +16,7 @@ const AppLayout: FunctionComponent = ({ children }) => {
       <Grid item className="body" xs={12}>
         {children}
       </Grid>
-      <Grid item className="footer" xs={12}>
+      <Grid item className="footer" xs={12} style={{ paddingTop: "100px" }}>
         <Footer description="블로그" title="gadamer1의 블로그" />
       </Grid>
     </Grid>

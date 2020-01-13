@@ -14,6 +14,22 @@ import { store } from "../reducers/types";
 import { NextPage, NextPageContext } from "next";
 import axios from "axios";
 import { LOAD_USER_REQUEST } from "../reducers/user/actions";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+
+const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#212121",
+      light: "#484848",
+      dark: "#000000"
+    },
+    secondary: {
+      main: "#424242",
+      light: "#6d6d6d",
+      dark: "#1b1b1b"
+    }
+  }
+});
 
 const Blog = ({ Component, store, pageProps }) => {
   // for material ui ssr
@@ -29,9 +45,11 @@ const Blog = ({ Component, store, pageProps }) => {
       <Head>
         <title>가다머의 블로그</title>
       </Head>
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <ThemeProvider theme={customTheme}>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </ThemeProvider>
     </Provider>
   );
 };

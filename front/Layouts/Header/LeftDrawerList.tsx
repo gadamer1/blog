@@ -79,20 +79,22 @@ const LeftDrawerList: FunctionComponent<{ toggleDrawer: Function }> = ({
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image="../../static/images/profile.jpg"
-            title="gadamer1"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5">
-              gadamer1
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Link href="/">
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="../../static/images/profile.jpg"
+              title="gadamer1"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5">
+                gadamer1
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Link>
 
       <Divider />
       <Typography className={classes.categoryTitle} gutterBottom>

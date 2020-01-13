@@ -13,6 +13,7 @@ import {
   Container
 } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import Breadcrumb from "../../Components/BreadCrumb";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,6 +87,7 @@ const Post = () => {
   return (
     <>
       <Container maxWidth="sm">
+        <Breadcrumb category={category} />
         <Grid container justify="center" spacing={3} className={classes.root}>
           <Grid item xs={12}>
             <CategoryTitle category={category} />

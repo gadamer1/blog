@@ -32,7 +32,7 @@ const PostItem = ({ category, posts }) => {
         {posts.map(post => {
           //@ts-ignore
           <Card className={classes.card} key={post._id}>
-            <CardActionArea href={`/${category}/${post.title}`}>
+            <CardActionArea href={`/${category}/${post.title}`} key={post._id}>
               <CardContent>
                 <Typography>{post.title}</Typography>
                 <Typography>{post.nickname}</Typography>

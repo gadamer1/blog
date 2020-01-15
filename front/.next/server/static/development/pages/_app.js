@@ -230,7 +230,8 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
   footer: {
     backgroundColor: theme.palette.background.paper,
     // marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0)
+    padding: theme.spacing(6, 0),
+    marginTop: "200px"
   }
 }));
 
@@ -243,14 +244,14 @@ const Footer = ({
     className: classes.footer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: undefined
   }, __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_2___default.a, {
     maxWidth: "lg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: undefined
   }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -259,7 +260,7 @@ const Footer = ({
     gutterBottom: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 38
     },
     __self: undefined
   }, title), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -269,13 +270,13 @@ const Footer = ({
     component: "p",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 41
     },
     __self: undefined
   }, description), __jsx(Copyright, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 49
     },
     __self: undefined
   })));
@@ -448,20 +449,6 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     flexGrow: 1
   }
 }));
-const customTheme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["createMuiTheme"])({
-  palette: {
-    primary: {
-      main: "#212121",
-      light: "#484848",
-      dark: "#000000"
-    },
-    secondary: {
-      main: "#424242",
-      light: "#6d6d6d",
-      dark: "#1b1b1b"
-    }
-  }
-});
 
 const Header = () => {
   const classes = useStyles({});
@@ -469,48 +456,41 @@ const Header = () => {
     className: classes.root,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
-    },
-    __self: undefined
-  }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ThemeProvider"], {
-    theme: customTheme,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 36
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["AppBar"], {
     position: "static",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 38
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Toolbar"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 39
     },
     __self: undefined
   }, __jsx(_LeftDrawer__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 40
     },
     __self: undefined
   }), __jsx(_SearchInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 41
     },
     __self: undefined
   }), __jsx(_Auth__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 42
     },
     __self: undefined
-  })))));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -1253,7 +1233,7 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**********************************!*\
   !*** ./reducers/post/actions.ts ***!
   \**********************************/
-/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE */
+/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1270,6 +1250,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_REQUEST", function() { return FETCH_POST_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_SUCCESS", function() { return FETCH_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_FAILURE", function() { return FETCH_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_REQUEST", function() { return DELETE_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_SUCCESS", function() { return DELETE_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_FAILURE", function() { return DELETE_POST_FAILURE; });
 const MAKE_POST_REQUEST = "MAKE_POST_REQUEST";
 const MAKE_POST_SUCCESS = "MAKE_POST_SUCCESS";
 const MAKE_POST_FAILURE = "MAKE_POST_FAILURE";
@@ -1282,6 +1265,9 @@ const GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
 const FETCH_POST_REQUEST = "FETCH_POST_REQUEST";
 const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
 const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
+const DELETE_POST_REQUEST = "DELETE_POST_REQUEST";
+const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
+const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
 
 /***/ }),
 
@@ -1306,7 +1292,9 @@ const initialState = {
     isPostLoading: false,
     isPosting: false,
     isPostingSuccess: false,
-    isPostsLoading: false
+    isPostsLoading: false,
+    isPostDeleting: false,
+    isPostDeleteSuccess: false
   },
   metaStates: {
     getPostStatusCode: 0,
@@ -1393,6 +1381,23 @@ const initialState = {
         {
           draft.loadingStates.isPostLoading = false;
           break;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_POST_REQUEST"]:
+        {
+          draft.loadingStates.isPostDeleting = true;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_POST_SUCCESS"]:
+        {
+          draft.loadingStates.isPostDeleting = false;
+          draft.loadingStates.isPostDeleteSuccess = true;
+        }
+
+      case _actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_POST_FAILURE"]:
+        {
+          draft.loadingStates.isPostDeleting = false;
+          draft.loadingStates.isPostDeleteSuccess = true;
         }
 
       default:
@@ -1620,7 +1625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "https://gadamer1-blog.appspot.com/api";
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "http://localhost:8080/api";
 function* rootSaga() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_2__["default"])]);
 }
@@ -1737,8 +1742,34 @@ function* watchFetchPost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_REQUEST"], fetchPost);
 }
 
+function deletePostAPI(data) {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.delete(`/post`, {
+    data
+  });
+}
+
+function* deletePost(action) {
+  try {
+    const Post = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(deletePostAPI, action.payload);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_SUCCESS"],
+      result: Post.data.post
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["FETCH_POST_FAILURE"],
+      error: e.response
+    });
+  }
+}
+
+function* watchDeltePost() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post_actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_POST_REQUEST"], deletePost);
+}
+
 function* postSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchMakePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchFetchPost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchMakePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchGetPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchFetchPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeltePost)]);
 }
 
 /***/ }),

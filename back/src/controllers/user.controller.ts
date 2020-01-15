@@ -39,7 +39,13 @@ export const registerUser = wrapper(async (req, res) => {
   }
   const token = jwtSign({ userId: user._id });
   res.cookie("X-Access-Token", token);
-  const returnUser = selectCopyObject(user, ["_id", "nickname", "email"]);
+  const returnUser = selectCopyObject(user, [
+    "_id",
+    "nickname",
+    "email",
+    "emailVerified",
+    "admin"
+  ]);
   return res.status(200).json({
     success: true,
     "X-Access-Token": token,
@@ -72,17 +78,17 @@ export const loginUser = wrapper(async (req, res) => {
   }
   const token = jwtSign({ userId: user._id });
   res.cookie("X-Access-Token", token);
-
   const returnUser = selectCopyObject(user, [
     "_id",
     "nickname",
     "email",
-    "admin"
+    "admin",
+    "emailVerified"
   ]);
   return res.status(200).json({
     success: true,
     "X-Access-Token": token,
-    user: returnUser
+    user
   });
 });
 

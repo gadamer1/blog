@@ -27,27 +27,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const customTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#212121",
-      light: "#484848",
-      dark: "#000000"
-    },
-    secondary: {
-      main: "#424242",
-      light: "#6d6d6d",
-      dark: "#1b1b1b"
-    }
-  }
-});
+
 
 const Header: FunctionComponent = () => {
   const classes = useStyles({});
 
   return (
     <div className={classes.root}>
-      <ThemeProvider theme={customTheme}>
+      
         <AppBar position="static">
           <Toolbar>
             <LeftDrawer />
@@ -55,7 +42,6 @@ const Header: FunctionComponent = () => {
             <Auth />
           </Toolbar>
         </AppBar>
-      </ThemeProvider>
     </div>
   );
 };

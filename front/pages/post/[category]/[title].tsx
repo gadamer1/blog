@@ -4,31 +4,25 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import {
   GET_POST_REQUEST,
-  FETCH_POST_REQUEST
+  FETCH_POST_REQUEST,
+  DELETE_POST_REQUEST,
+  DELETE_POST_FAILURE
 } from "../../../reducers/post/actions";
 import { store } from "../../../reducers/types";
-import Renderer from "../../../Components/draft/Renderer";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Grid,
-  Typography,
-  Chip,
-  Breadcrumbs
-} from "@material-ui/core";
+import { Grid, Typography, Chip, Button } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Face as FaceIcon } from "@material-ui/icons";
 import Router from "next/router";
 import Breadcrumb from "../../../Components/BreadCrumb";
+import CustomMarkdown from "../../../Components/CustomMarkdown";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100%",
+      width: "80%",
       backgroundColor: theme.palette.background.paper,
       justifyContent: "center",
-      margin: "100px"
+      paddingLeft: "20px"
     },
     container: {
       marginBottom: "200px"
@@ -41,15 +35,36 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Post = () => {
   const classes = useStyles({});
+  const dispatch = useDispatch();
   const { currentPost } = useSelector((state: store) => state.post);
-  const { isPostLoading } = useSelector(
+  const { isPostLoading, isPostDeleting, isPostDeleteSuccess } = useSelector(
     (state: store) => state.post.loadingStates
   );
-
+  const { me } = useSelector((state: store) => state.user);
   const { category, title } = useRouter().query;
+
+  useEffect(() => {
+    if (isPostDeleteSuccess) {
+      dispatch({
+        type: DELETE_POST_FAILURE
+      });
+      Router.push(`/post/${category}`);
+    }
+  }, [isPostDeleteSuccess]);
 
   const _onClickNickname = nickname => () => {
     Router.push(`/profile/${nickname}`);
+  };
+
+  const _onClickDeleteButton = e => {
+    e.preventDefault();
+    dispatch({
+      type: DELETE_POST_REQUEST,
+      payload: {
+        postId: currentPost._id,
+        userId: me._id
+      }
+    });
   };
 
   if (isPostLoading) {
@@ -58,32 +73,42 @@ const Post = () => {
         <div>로딩중 입니다!</div>
       </>
     );
-  } else {
+  } else if (currentPost) {
     return (
       <div className={classes.root}>
         <Breadcrumb category={category} title={title} />
         <Grid container className={classes.container}>
           <Grid item xs={6}>
-            <Typography variant="h4">
-              타이틀
-              <Typography variant="h5" color="primary">
+            <Typography variant="h5" color="secondary">
+              제목
+              <Typography variant="h4" color="primary">
                 {currentPost.title}
               </Typography>
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} style={{ float: "right" }}>
             <Chip
               icon={<FaceIcon />}
               onClick={_onClickNickname(currentPost.nickname)}
               label={currentPost.nickname}
             />
+            {me && me.nickname === currentPost.nickname && (
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={_onClickDeleteButton}
+              >
+                삭제
+              </Button>
+            )}
             <Typography color="textSecondary">{currentPost.Date}</Typography>
           </Grid>
         </Grid>
-
-        {currentPost && <Renderer raw={JSON.parse(currentPost.body)} />}
+        {currentPost && <CustomMarkdown source={currentPost.body} />}
       </div>
     );
+  } else {
+    return <div>포스트가 존재하지 않습니다</div>;
   }
 };
 

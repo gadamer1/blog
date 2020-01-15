@@ -13,3 +13,7 @@ export const GET_POSTS_FAILURE = "GET_POSTS_FAILURE" as const;
 export const FETCH_POST_REQUEST = "FETCH_POST_REQUEST" as const;
 export const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS" as const;
 export const FETCH_POST_FAILURE = "FETCH_POST_FAILURE" as const;
+
+export const DELETE_POST_REQUEST = "DELETE_POST_REQUEST" as const;
+export const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS" as const;
+export const DELETE_POST_FAILURE = "DELETE_POST_FAILURE" as const;

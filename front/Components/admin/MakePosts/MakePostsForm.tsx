@@ -1,59 +1,47 @@
-import React, { Component, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
-import Router from "next/router";
-import { Editor } from "react-draft-wysiwyg";
-//load editor css
-import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
+import React, { useState, useEffect } from "react";
+import { NextPage } from "next";
 import {
-  Button,
+  FormControl,
+  InputLabel,
+  Input,
   Typography,
+  TextField,
+  Button,
   Select,
   MenuItem,
-  TextField,
-  FormControl,
   FormLabel,
+  FormHelperText,
+  TextareaAutosize,
+  Grid,
   FormControlLabel,
   Checkbox
 } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import Router from "next/router";
 import { store } from "../../../reducers/types";
 import CircularProgressComponent from "../../../utils/Components/CircularProgressComponent";
+import { useStyles } from "./MakePostsForm.style";
 import {
   MAKE_POST_REQUEST,
   MAKE_POST_FAILURE
 } from "../../../reducers/post/actions";
+import CustomMarkdown from "../../CustomMarkdown";
 
-function uploadImageCallBack(file) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.imgur.com/3/image");
-    xhr.setRequestHeader("Authorization", "Client-ID b1e6509aad56ae0");
-    const data = new FormData();
-    data.append("image", file);
-    xhr.send(data);
-    xhr.addEventListener("load", () => {
-      const response = JSON.parse(xhr.responseText);
-      resolve(response);
-    });
-    xhr.addEventListener("error", () => {
-      const error = JSON.parse(xhr.responseText);
-      reject(error);
-    });
-  });
-}
+const isBoolean = "true";
 
-const MakePostsForm = () => {
-  const [editorState, setEditorState] = useState("");
-  const [category, setCategory] = useState("dev");
+const MakePostsForm: NextPage = () => {
+  const classes = useStyles({});
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [text, setText] = useState("");
   const [hidden, setHidden] = useState(false);
   const dispatch = useDispatch();
   const { isPosting, isPostingSuccess } = useSelector(
     (state: store) => state.post.loadingStates
   );
   const { _id, nickname } = useSelector((state: store) => state.user.me);
-  // 포스팅 완료됐으면 튕구기
+
+  // redirect when posting post succesfully
   useEffect(() => {
     if (isPostingSuccess) {
       dispatch({
@@ -63,21 +51,22 @@ const MakePostsForm = () => {
       window.localStorage.removeItem("title");
       window.localStorage.removeItem("content");
 
-      Router.push(`/post/${category}/${title}`);
+      Router.replace(`/post/${category}/${title}`);
     }
   }, [isPostingSuccess]);
+
+  // window storage
+
   useEffect(() => {
-    const content = window.localStorage.getItem("content");
+    const text = window.localStorage.getItem("text");
     const title = window.localStorage.getItem("title");
     const category = window.localStorage.getItem("category");
     const hidden = window.localStorage.getItem("hidden");
 
-    if (content) {
-      setEditorState(
-        EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
-      );
+    if (text) {
+      setText(text);
     } else {
-      setEditorState(EditorState.createEmpty());
+      setText("");
     }
     if (title) {
       setTitle(title);
@@ -87,15 +76,17 @@ const MakePostsForm = () => {
     if (category) {
       setCategory(category);
     } else {
-      setCategory("");
+      setCategory("dev");
+    }
+    if (hidden) {
+      setHidden(isBoolean === hidden);
+    } else {
+      setHidden(false);
     }
   }, []);
 
-  const saveContent = content => {
-    window.localStorage.setItem(
-      "content",
-      JSON.stringify(convertToRaw(content))
-    );
+  const saveText = text => {
+    window.localStorage.setItem("text", text);
   };
 
   const saveTitle = title => {
@@ -105,21 +96,40 @@ const MakePostsForm = () => {
     window.localStorage.setItem("category", category);
   };
 
-  const onChangeEditorState: Function = editorState => {
-    const contentState = editorState.getCurrentContent();
-    saveContent(contentState);
-    setEditorState(editorState);
+  const saveHidden = hidden => {
+    window.localStorage.setItem("hidden", hidden);
   };
 
-  const _onClickPostButton = e => {
-    if (title.trim() !== "") {
+  const _onChangeText = e => {
+    setText(e.target.value);
+    saveText(e.target.value);
+  };
+
+  const _onCategoryChange = (e: React.ChangeEvent<{ value: string }>) => {
+    setCategory(e.target.value);
+    saveCategory(e.target.value);
+  };
+
+  const _onChangeTitle = (e: React.ChangeEvent<{ value: string }>) => {
+    setTitle(e.target.value);
+    saveTitle(e.target.value);
+  };
+
+  const _onChangeHidden = e => {
+    setHidden(e.target.checked);
+    saveHidden(e.target.checked);
+  };
+
+  const _onSubmitPost = e => {
+    e.preventDefault();
+    if (text.trim() !== "" && title.trim() !== "") {
       dispatch({
         type: MAKE_POST_REQUEST,
         payload: {
           authorId: _id,
           category,
           // @ts-ignore
-          body: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
+          body: text,
           title,
           hidden,
           nickname
@@ -127,76 +137,69 @@ const MakePostsForm = () => {
       });
     }
   };
-  const _onCategoryChange = (e: React.ChangeEvent<{ value: string }>) => {
-    saveCategory(e.target.value);
-    setCategory(e.target.value);
-  };
-
-  const _onChangeTitle = e => {
-    saveTitle(e.target.value);
-    setTitle(e.target.value);
-  };
-
-  const _onChangeHidden = e => {
-    setHidden(e.target.checked);
-  };
 
   return (
-    <>
-      <FormControl>
+    <form className={classes.root} onSubmit={_onSubmitPost}>
+      <Typography component="h1" variant="h5">
+        게시글 작성하기
+      </Typography>
+      <FormControl margin="normal" className={classes.formControl}>
         <TextField
           id="outlined-basic"
           label="제목"
           variant="outlined"
           value={title}
           onChange={_onChangeTitle}
+          className={classes.title}
+          fullWidth
         />
-        <FormLabel component="legend">카테고리</FormLabel>
+      </FormControl>
+      <FormControl className={classes.formControl}>
         <Select value={category} onChange={_onCategoryChange}>
           <MenuItem value="dev">개발</MenuItem>
           <MenuItem value="hacking">해킹</MenuItem>
           <MenuItem value="finance">재테크</MenuItem>
           <MenuItem value="business">비즈니스</MenuItem>
         </Select>
-
-        <Editor
-          //@ts-ignore
-          editorState={editorState}
-          editorClassName="demo-editor"
-          onEditorStateChange={onChangeEditorState}
-          localization={{ locale: "ko" }}
-          toolbar={{
-            image: {
-              uploadCallback: uploadImageCallBack,
-              alt: { present: true, mandatory: true }
-            }
-          }}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={_onClickPostButton}
-          disabled={isPosting}
-        >
-          {isPosting ? (
-            <CircularProgressComponent />
-          ) : (
-            <Typography>포스팅</Typography>
-          )}
-        </Button>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={hidden}
-              onChange={_onChangeHidden}
-              value={hidden}
-              color="primary"
-            />
-          }
-          label="임시저장"
-        />
+        <FormHelperText>카테고리</FormHelperText>
       </FormControl>
-    </>
+      <Grid container spacing={3}>
+        <Grid item xs={6} style={{ width: "100%" }}>
+          <textarea
+            value={text}
+            onChange={_onChangeText}
+            className={classes.markdownTextArea}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CustomMarkdown source={text} />
+        </Grid>
+      </Grid>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disabled={isPosting}
+        className={classes.postButton}
+      >
+        {isPosting ? (
+          <CircularProgressComponent />
+        ) : (
+          <Typography>포스팅</Typography>
+        )}
+      </Button>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={hidden}
+            onChange={_onChangeHidden}
+            value={hidden}
+            color="primary"
+          />
+        }
+        label="임시저장"
+      />
+    </form>
   );
 };
 

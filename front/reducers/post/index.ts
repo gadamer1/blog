@@ -11,7 +11,10 @@ import {
   GET_POST_FAILURE,
   FETCH_POST_REQUEST,
   FETCH_POST_SUCCESS,
-  FETCH_POST_FAILURE
+  FETCH_POST_FAILURE,
+  DELETE_POST_REQUEST,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE
 } from "./actions";
 import { postStore } from "./interfaces";
 
@@ -22,7 +25,9 @@ const initialState: postStore = {
     isPostLoading: false,
     isPosting: false,
     isPostingSuccess: false,
-    isPostsLoading: false
+    isPostsLoading: false,
+    isPostDeleting: false,
+    isPostDeleteSuccess: false
   },
   metaStates: {
     getPostStatusCode: 0,
@@ -96,6 +101,17 @@ export default (state = initialState, action) => {
         break;
       }
 
+      case DELETE_POST_REQUEST: {
+        draft.loadingStates.isPostDeleting = true;
+      }
+      case DELETE_POST_SUCCESS: {
+        draft.loadingStates.isPostDeleting = false;
+        draft.loadingStates.isPostDeleteSuccess = true;
+      }
+      case DELETE_POST_FAILURE: {
+        draft.loadingStates.isPostDeleting = false;
+        draft.loadingStates.isPostDeleteSuccess = true;
+      }
       default: {
         break;
       }

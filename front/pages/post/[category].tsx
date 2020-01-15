@@ -86,7 +86,7 @@ const Post = () => {
 
   return (
     <>
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
         <Breadcrumb category={category} />
         <Grid container justify="center" spacing={3} className={classes.root}>
           <Grid item xs={12}>

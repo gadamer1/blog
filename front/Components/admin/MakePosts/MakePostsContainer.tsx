@@ -1,18 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { NextPage } from "next";
-import dynamic from "next/dynamic";
-import { Container, Button } from "@material-ui/core";
+
+import { Container } from "@material-ui/core";
+import MakePostsEditor from "./MakePostsEditor";
 
 const MakePostsContainer: NextPage = () => {
-  const DynamicEditor = dynamic(() => import("./MakePostsForm"), {
-    ssr: false
-  });
-
   return (
     <div>
-      <Container maxWidth="sm">
-        <DynamicEditor />
+      <Container maxWidth="lg">
+        <MakePostsEditor />
       </Container>
     </div>
   );

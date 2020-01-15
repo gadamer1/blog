@@ -11,7 +11,8 @@ import {
   GET_POST_SUCCESS,
   FETCH_POST_FAILURE,
   FETCH_POST_SUCCESS,
-  FETCH_POST_REQUEST
+  FETCH_POST_REQUEST,
+  DELETE_POST_REQUEST
 } from "../reducers/post/actions";
 import axios from "axios";
 
@@ -102,6 +103,37 @@ function* watchFetchPost() {
   yield takeLatest(FETCH_POST_REQUEST, fetchPost);
 }
 
+function deletePostAPI(data) {
+  return axios.delete(`/post`, {
+    data
+  });
+}
+
+function* deletePost(action) {
+  try {
+    const Post = yield call(deletePostAPI, action.payload);
+    yield put({
+      type: FETCH_POST_SUCCESS,
+      result: Post.data.post
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: FETCH_POST_FAILURE,
+      error: e.response
+    });
+  }
+}
+
+function* watchDeltePost() {
+  yield takeLatest(DELETE_POST_REQUEST, deletePost);
+}
+
 export default function* postSaga() {
-  yield all([fork(watchMakePost), fork(watchGetPosts), fork(watchFetchPost)]);
+  yield all([
+    fork(watchMakePost),
+    fork(watchGetPosts),
+    fork(watchFetchPost),
+    fork(watchDeltePost)
+  ]);
 }

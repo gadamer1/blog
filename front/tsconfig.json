@@ -27,6 +27,7 @@
     "Components/home/Project.js",
     "Components/home/Navbar.js",
     "Components/home/Home.js",
-    "Components/home/Contact.js"
+    "Components/home/Contact.js",
+    "Components/admin/MakePosts/CodeBlock.js"
   ]
 }

@@ -7,7 +7,10 @@ import {
   GET_POSTS_FAILURE,
   FETCH_POST_SUCCESS,
   FETCH_POST_REQUEST,
-  FETCH_POST_FAILURE
+  FETCH_POST_FAILURE,
+  DELETE_POST_REQUEST,
+  DELETE_POST_FAILURE,
+  DELETE_POST_SUCCESS
 } from "./actions";
 // STATES
 
@@ -27,6 +30,8 @@ export interface loadingStates {
   isPostsLoading: boolean;
   isPostLoading: boolean;
   isPostingSuccess: boolean;
+  isPostDeleting: boolean;
+  isPostDeleteSuccess: boolean;
 }
 
 /* meta states */
@@ -94,6 +99,22 @@ export interface fetchPostFailureAction {
   errorCode: number;
 }
 
+/* 게시글 지우기 */
+export interface deletePostRequsetAction {
+  type: typeof DELETE_POST_REQUEST;
+  payload: {
+    postId: string;
+    userId: string;
+  } | null;
+}
+export interface deletePostSuccessAction {
+  type: typeof DELETE_POST_SUCCESS;
+}
+export interface deletePostFailureAction {
+  type: typeof DELETE_POST_FAILURE;
+  errorCode: number;
+}
+
 export type userActions =
   | makePostRequestAction
   | makePostSuccessAction
@@ -103,4 +124,7 @@ export type userActions =
   | getPostsFailureAction
   | fetchPostFailureAction
   | fetchPostRequsetAction
-  | fetchPostSuccessAction;
+  | fetchPostSuccessAction
+  | deletePostFailureAction
+  | deletePostRequsetAction
+  | deletePostSuccessAction;

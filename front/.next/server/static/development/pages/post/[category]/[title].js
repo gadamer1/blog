@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -154,134 +154,114 @@ const Breadcrumb = props => {
 
 /***/ }),
 
-/***/ "./Components/draft/Renderer.js":
-/*!**************************************!*\
-  !*** ./Components/draft/Renderer.js ***!
-  \**************************************/
+/***/ "./Components/CustomMarkdown.tsx":
+/*!***************************************!*\
+  !*** ./Components/CustomMarkdown.tsx ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Renderer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _renderer_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderer.config */ "./Components/draft/renderer.config.js");
-/* harmony import */ var redraft__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redraft */ "redraft");
-/* harmony import */ var redraft__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redraft__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "D:\\webdev\\blog\\front\\Components\\draft\\Renderer.js";
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-markdown */ "react-markdown");
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _admin_MakePosts_CodeBlock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/MakePosts/CodeBlock */ "./Components/admin/MakePosts/CodeBlock.js");
+var _jsxFileName = "D:\\webdev\\blog\\front\\Components\\CustomMarkdown.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-class Renderer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  renderWarning() {
-    return __jsx("div", {
+
+function CustomLink(props) {
+  return __jsx("a", {
+    href: props.href,
+    style: {
+      textDecoration: "none",
+      color: "cadetblue"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, props.children.map(({
+    props
+  }) => {
+    return __jsx("span", {
+      key: props.nodeKey,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 10
       },
       __self: this
-    }, "Nothing to render.");
-  }
-
-  render() {
-    const {
-      raw
-    } = this.props;
-
-    if (!raw) {
-      return this.renderWarning();
-    }
-
-    const rendered = redraft__WEBPACK_IMPORTED_MODULE_2___default()(raw, _renderer_config__WEBPACK_IMPORTED_MODULE_1__["renderers"]); // redraft returns a null if there's nothing to render
-
-    if (!rendered) {
-      return this.renderWarning();
-    }
-
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20
-      },
-      __self: this
-    }, rendered);
-  }
-
+    }, props.children);
+  }));
 }
+
+const CustomMarkdown = ({
+  source
+}) => {
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, __jsx(react_markdown__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    source: source,
+    renderers: {
+      code: _admin_MakePosts_CodeBlock__WEBPACK_IMPORTED_MODULE_2__["default"],
+      link: CustomLink
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: undefined
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CustomMarkdown);
 
 /***/ }),
 
-/***/ "./Components/draft/renderer.config.js":
-/*!*********************************************!*\
-  !*** ./Components/draft/renderer.config.js ***!
-  \*********************************************/
-/*! exports provided: renderers */
+/***/ "./Components/admin/MakePosts/CodeBlock.js":
+/*!*************************************************!*\
+  !*** ./Components/admin/MakePosts/CodeBlock.js ***!
+  \*************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderers", function() { return renderers; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redraft__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redraft */ "redraft");
-/* harmony import */ var redraft__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redraft__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "D:\\webdev\\blog\\front\\Components\\draft\\renderer.config.js";
+/* harmony import */ var react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-syntax-highlighter */ "react-syntax-highlighter");
+/* harmony import */ var react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_syntax_highlighter_dist_cjs_styles_hljs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-syntax-highlighter/dist/cjs/styles/hljs */ "react-syntax-highlighter/dist/cjs/styles/hljs");
+/* harmony import */ var react_syntax_highlighter_dist_cjs_styles_hljs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter_dist_cjs_styles_hljs__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "D:\\webdev\\blog\\front\\Components\\admin\\MakePosts\\CodeBlock.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const styleMap = {
-  BOLD: {
-    fontWeight: "bold"
-  },
-  ITALIC: {
-    fontStyle: "italic"
-  },
-  UNDERLINE: {
-    textDecoration: "underline"
-  }
-}; // This is a wrapper callback for the inline styles
-// the style object contains all the relevant styles from the styleMap
-// it needs a key as redraft returns arrays not Components
 
-const InlineWrapper = ({
-  children,
-  style,
-  key
-}) => __jsx("span", {
-  key: key,
-  style: style,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 20
-  },
-  __self: undefined
-}, children); // this Component results in a flatter output as it can have multiple styles (also possibly less semantic)
-// Api aligned w draft-js, aliasedElements are not required as draft-js uses them for parsing pasted html
-
-
-const blockRenderMap = {
-  unstyled: {
-    element: "div"
-  },
-  blockquote: {
-    element: "blockquote"
-  },
-  "ordered-list-item": {
-    element: "li",
-    wrapper: "ol"
-  },
-  "unordered-list-item": {
-    element: "li",
-    wrapper: "ul"
-  }
-};
-const renderers = {
-  // note the styles key and createStylesRenderer helper
-  styles: Object(redraft__WEBPACK_IMPORTED_MODULE_1__["createStylesRenderer"])(InlineWrapper, styleMap),
-  blocks: Object(redraft__WEBPACK_IMPORTED_MODULE_1__["createBlockRenderer"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement, blockRenderMap)
-};
+const CodeBlock = Object(react__WEBPACK_IMPORTED_MODULE_0__["memo"])(({
+  value,
+  language
+}) => {
+  return __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    language: language,
+    style: react_syntax_highlighter_dist_cjs_styles_hljs__WEBPACK_IMPORTED_MODULE_2__["docco"],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: undefined
+  }, value);
+});
+/* harmony default export */ __webpack_exports__["default"] = (CodeBlock);
 
 /***/ }),
 
@@ -301,14 +281,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _reducers_post_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/post/actions */ "./reducers/post/actions.ts");
-/* harmony import */ var _Components_draft_Renderer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/draft/Renderer */ "./Components/draft/Renderer.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons */ "@material-ui/icons");
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _Components_BreadCrumb__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../Components/BreadCrumb */ "./Components/BreadCrumb.tsx");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/icons */ "@material-ui/icons");
+/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Components_BreadCrumb__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Components/BreadCrumb */ "./Components/BreadCrumb.tsx");
+/* harmony import */ var _Components_CustomMarkdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../Components/CustomMarkdown */ "./Components/CustomMarkdown.tsx");
 var _jsxFileName = "D:\\webdev\\blog\\front\\pages\\post\\[category]\\[title].tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -321,9 +301,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["makeStyles"])(theme => Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["createStyles"])({
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["makeStyles"])(theme => Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["createStyles"])({
   root: {
-    width: "100%",
+    width: "80%",
     backgroundColor: theme.palette.background.paper,
     justifyContent: "center",
     paddingLeft: "20px"
@@ -338,78 +318,103 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["
 
 const Post = () => {
   const classes = useStyles({});
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
   const {
     currentPost
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.post);
   const {
-    isPostLoading
+    isPostLoading,
+    isPostDeleting,
+    isPostDeleteSuccess
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.post.loadingStates);
+  const {
+    me
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
   const {
     category,
     title
   } = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])().query;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (isPostDeleteSuccess) {
+      dispatch({
+        type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_3__["DELETE_POST_FAILURE"]
+      });
+      next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push(`/post/${category}`);
+    }
+  }, [isPostDeleteSuccess]);
 
   const _onClickNickname = nickname => () => {
     next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push(`/profile/${nickname}`);
+  };
+
+  const _onClickDeleteButton = e => {
+    e.preventDefault();
+    dispatch({
+      type: _reducers_post_actions__WEBPACK_IMPORTED_MODULE_3__["DELETE_POST_REQUEST"],
+      payload: {
+        postId: currentPost._id,
+        userId: me._id
+      }
+    });
   };
 
   if (isPostLoading) {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 73
       },
       __self: undefined
     }, "\uB85C\uB529\uC911 \uC785\uB2C8\uB2E4!"));
-  } else {
+  } else if (currentPost) {
     return __jsx("div", {
       className: classes.root,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 78
       },
       __self: undefined
-    }, __jsx(_Components_BreadCrumb__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }, __jsx(_Components_BreadCrumb__WEBPACK_IMPORTED_MODULE_7__["default"], {
       category: category,
       title: title,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 79
       },
       __self: undefined
-    }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Grid"], {
+    }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Grid"], {
       container: true,
       className: classes.container,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 80
       },
       __self: undefined
-    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Grid"], {
+    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Grid"], {
       item: true,
       xs: 6,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 81
       },
       __self: undefined
-    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
+    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       variant: "h5",
       color: "secondary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67
+        lineNumber: 82
       },
       __self: undefined
-    }, "\uC81C\uBAA9", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
+    }, "\uC81C\uBAA9", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       variant: "h4",
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 84
       },
       __self: undefined
-    }, currentPost.title))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Grid"], {
+    }, currentPost.title))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Grid"], {
       item: true,
       xs: 6,
       style: {
@@ -417,14 +422,14 @@ const Post = () => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 89
       },
       __self: undefined
-    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Chip"], {
-      icon: __jsx(_material_ui_icons__WEBPACK_IMPORTED_MODULE_7__["Face"], {
+    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Chip"], {
+      icon: __jsx(_material_ui_icons__WEBPACK_IMPORTED_MODULE_6__["Face"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 91
         },
         __self: undefined
       }),
@@ -432,24 +437,41 @@ const Post = () => {
       label: currentPost.nickname,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 75
+        lineNumber: 90
       },
       __self: undefined
-    }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Typography"], {
+    }), me && me.nickname === currentPost.nickname && __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      color: "secondary",
+      variant: "contained",
+      onClick: _onClickDeleteButton,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: undefined
+    }, "\uC0AD\uC81C"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
       color: "textSecondary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 104
       },
       __self: undefined
-    }, currentPost.Date))), currentPost && __jsx(_Components_draft_Renderer__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      raw: JSON.parse(currentPost.body),
+    }, currentPost.Date))), currentPost && __jsx(_Components_CustomMarkdown__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      source: currentPost.body,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 84
+        lineNumber: 107
       },
       __self: undefined
     }));
+  } else {
+    return __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111
+      },
+      __self: undefined
+    }, "\uD3EC\uC2A4\uD2B8\uAC00 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
   }
 };
 
@@ -476,7 +498,7 @@ Post.getInitialProps = ctx => {
 /*!**********************************!*\
   !*** ./reducers/post/actions.ts ***!
   \**********************************/
-/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE */
+/*! exports provided: MAKE_POST_REQUEST, MAKE_POST_SUCCESS, MAKE_POST_FAILURE, GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAILURE, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE, FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -493,6 +515,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_REQUEST", function() { return FETCH_POST_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_SUCCESS", function() { return FETCH_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST_FAILURE", function() { return FETCH_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_REQUEST", function() { return DELETE_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_SUCCESS", function() { return DELETE_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_FAILURE", function() { return DELETE_POST_FAILURE; });
 const MAKE_POST_REQUEST = "MAKE_POST_REQUEST";
 const MAKE_POST_SUCCESS = "MAKE_POST_SUCCESS";
 const MAKE_POST_FAILURE = "MAKE_POST_FAILURE";
@@ -505,10 +530,13 @@ const GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
 const FETCH_POST_REQUEST = "FETCH_POST_REQUEST";
 const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
 const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
+const DELETE_POST_REQUEST = "DELETE_POST_REQUEST";
+const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
+const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*************************************************!*\
   !*** multi ./pages/post/[category]/[title].tsx ***!
   \*************************************************/
@@ -575,6 +603,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-markdown":
+/*!*********************************!*\
+  !*** external "react-markdown" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-markdown");
+
+/***/ }),
+
 /***/ "react-redux":
 /*!******************************!*\
   !*** external "react-redux" ***!
@@ -586,14 +625,25 @@ module.exports = require("react-redux");
 
 /***/ }),
 
-/***/ "redraft":
-/*!**************************!*\
-  !*** external "redraft" ***!
-  \**************************/
+/***/ "react-syntax-highlighter":
+/*!*******************************************!*\
+  !*** external "react-syntax-highlighter" ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("redraft");
+module.exports = require("react-syntax-highlighter");
+
+/***/ }),
+
+/***/ "react-syntax-highlighter/dist/cjs/styles/hljs":
+/*!****************************************************************!*\
+  !*** external "react-syntax-highlighter/dist/cjs/styles/hljs" ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-syntax-highlighter/dist/cjs/styles/hljs");
 
 /***/ })
 

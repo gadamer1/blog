@@ -9,7 +9,8 @@
     "start": "node ./dist/server"
   },
   "engines": {
-    "node": "12.14.0"
+    "node": "12.14.0",
+    "npm": "6.13.4"
   },
   "author": "gadamer1",
   "license": "ISC",

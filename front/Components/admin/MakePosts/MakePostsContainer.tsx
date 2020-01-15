@@ -11,7 +11,7 @@ const MakePostsContainer: NextPage = () => {
 
   return (
     <div>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <DynamicEditor />
       </Container>
     </div>

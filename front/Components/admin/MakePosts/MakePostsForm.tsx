@@ -108,6 +108,7 @@ const MakePostsForm = () => {
   const onChangeEditorState: Function = editorState => {
     const contentState = editorState.getCurrentContent();
     saveContent(contentState);
+    console.log(editorState);
     setEditorState(editorState);
   };
 
@@ -150,9 +151,14 @@ const MakePostsForm = () => {
           variant="outlined"
           value={title}
           onChange={_onChangeTitle}
+          style={{ maxWidth: "100%" }}
         />
         <FormLabel component="legend">카테고리</FormLabel>
-        <Select value={category} onChange={_onCategoryChange}>
+        <Select
+          value={category}
+          onChange={_onCategoryChange}
+          style={{ maxWidth: 100 }}
+        >
           <MenuItem value="dev">개발</MenuItem>
           <MenuItem value="hacking">해킹</MenuItem>
           <MenuItem value="finance">재테크</MenuItem>
@@ -161,11 +167,17 @@ const MakePostsForm = () => {
 
         <Editor
           //@ts-ignore
+          wrapperClassName="demo-wrapper"
           editorState={editorState}
           editorClassName="demo-editor"
           onEditorStateChange={onChangeEditorState}
           localization={{ locale: "ko" }}
           toolbar={{
+            inline: { inDropdown: true },
+            list: { inDropdown: true },
+            textAlign: { inDropdown: true },
+            link: { inDropdown: true },
+            history: { inDropdown: true },
             image: {
               uploadCallback: uploadImageCallBack,
               alt: { present: true, mandatory: true }

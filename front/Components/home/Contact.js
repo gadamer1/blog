@@ -10,7 +10,7 @@ class Work extends Component {
       <div>
         <h1 className="heading">
           <Fade bottom cascade>
-            Work.
+            
           </Fade>
         </h1>
         <div className="work-content">

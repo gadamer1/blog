@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       backgroundColor: theme.palette.background.paper,
       justifyContent: "center",
-      margin: "100px"
+      paddingLeft: "20px"
     },
     container: {
       marginBottom: "200px"
@@ -64,14 +64,14 @@ const Post = () => {
         <Breadcrumb category={category} title={title} />
         <Grid container className={classes.container}>
           <Grid item xs={6}>
-            <Typography variant="h4">
-              타이틀
-              <Typography variant="h5" color="primary">
+            <Typography variant="h5" color="secondary">
+              제목
+              <Typography variant="h4" color="primary">
                 {currentPost.title}
               </Typography>
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} style={{ float: "right" }}>
             <Chip
               icon={<FaceIcon />}
               onClick={_onClickNickname(currentPost.nickname)}
